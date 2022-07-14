@@ -22,7 +22,7 @@ const Main = () => {
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt={movie?.title}
         />
-        <div className='w-full absolute top-[20%] p-4 md:p-8'>
+        <div className='w-full absolute top-[70%] sm:top-[30%] p-4 md:p-8'>
           <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
           <div className='my-4'>
             <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
@@ -36,7 +36,7 @@ const Main = () => {
             Released:{" "}
             {new Date(movie?.release_date).toLocaleDateString("en-GB")}
           </p>
-          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[30%] text-gray-200 bg-black/60 rounded p-2'>
+          <p className='md:w-full hidden md:max-w-[70%] md:block lg:max-w-[50%] xl:max-w-[30%] text-gray-200 bg-black/60 rounded p-2'>
             {movie?.overview}
           </p>
         </div>
