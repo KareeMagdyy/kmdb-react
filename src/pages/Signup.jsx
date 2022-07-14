@@ -8,18 +8,20 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const { user, signUp } = UserAuth();
+  const [err, setErr] = useState("");
+  const { signUp } = UserAuth();
 
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setErr("");
     try {
       await signUp(email, password, firstName, lastName);
-      navigate("/");
-      console.log(user);
+      err.length === 0 && navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error.code);
+      setErr(error.code);
     }
   };
 
@@ -35,8 +37,13 @@ const Signup = () => {
         <div className=' bg-gradient-to-b from-black/80 fixed inset-0'></div>
         <div className='fixed w-full px-4 py-24 z-50 '>
           <div className='max-w-[450px] h-[80vh] mx-auto bg-black/75 text-white rounded-2xl'>
-            <div className='py-16 max-w-[320px] mx-auto'>
+            <div className='py-10 max-w-[320px] mx-auto'>
               <h1 className='text-3xl font-bold'>Sign Up</h1>
+              {err === "auth/email-already-in-use" && (
+                <p className='bg-red-800 rounded font-bold p-2 mt-3'>
+                  Email Already Exist
+                </p>
+              )}
               <form
                 onSubmit={submitHandler}
                 className='flex flex-col py-4 w-full'
@@ -80,7 +87,7 @@ const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
-                <button className='bg-red-600 font-bold py-3 my-6 rounded'>
+                <button className='bg-red-600 font-bold py-3 my-4 rounded'>
                   Sign Up
                 </button>
                 <div className='flex items-center justify-between text-sm text-gray-500'>
@@ -93,7 +100,7 @@ const Signup = () => {
                   </label>
                   <p>Need Help?</p>
                 </div>
-                <p className='py-4 mt-6 text-center'>
+                <p className='py-4 mt-2 text-center'>
                   <span className='text-gray-500 mr-1 '>
                     Already have an account
                   </span>{" "}

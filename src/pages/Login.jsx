@@ -17,7 +17,8 @@ const Login = () => {
       await signIn(email, password);
       navigate("/");
     } catch (error) {
-      setErr(error.message);
+      console.log(error.code);
+      setErr(error.code);
     }
   };
 
@@ -35,12 +36,12 @@ const Login = () => {
           <div className='max-w-[450px] h-[80vh] mx-auto bg-black/75 text-white rounded-2xl'>
             <div className='py-16 max-w-[320px] mx-auto'>
               <h1 className='text-3xl font-bold'>Sign In</h1>
-              {err.includes("wrong-password") && (
+              {err === "auth/wrong-password" && (
                 <p className='bg-red-800 rounded font-bold p-3 mt-4'>
                   Invalid Password
                 </p>
               )}
-              {err.includes("user-not-found") && (
+              {err.includes("auth/user-not-found") && (
                 <p className='bg-red-800 rounded font-bold p-3 mt-4'>
                   Invalid Email
                 </p>

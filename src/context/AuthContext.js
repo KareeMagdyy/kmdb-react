@@ -1,19 +1,28 @@
 import { useEffect, useState, useContext, createContext } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const signUp = (email, password, firstName, lastName) =>
-    createUserWithEmailAndPassword(auth, email, password, firstName, lastName);
+  const signUp = async (email, password, firstName, lastName) => {
+    if (!email || !password || firstName || lastName) return;
+    await createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(db, "users", email), {
+      firstName: firstName,
+      lastName: lastName,
+      created: new Date(),
+      savedShows: [],
+    });
+  };
 
   const signIn = (email, password) =>
     signInWithEmailAndPassword(auth, email, password);

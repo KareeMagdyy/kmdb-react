@@ -1,7 +1,7 @@
 import bgImg from "../assets/home-bg-lg.jpg";
 import { Link } from "react-router-dom";
 
-const MainLoggedOut = () => {
+const GetStarted = () => {
   return (
     <main>
       <div className='w-full h-screen absolute'>
@@ -30,4 +30,4 @@ const MainLoggedOut = () => {
   );
 };
 
-export default MainLoggedOut;
+export default GetStarted;

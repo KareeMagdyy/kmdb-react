@@ -11,6 +11,7 @@ const Main = () => {
     axios
       .get(requests.requestPopular)
       .then((res) => setMovies(res.data.results));
+    // .then((res) => console.log(res.data));
   }, []);
 
   return (
