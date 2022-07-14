@@ -14,7 +14,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className='w-full h-screen text-white'>
+    <div className='w-full relative  h-[55vh] md:h-screen text-white'>
       <div className='w-full h-full'>
         <div className='absolute w-full h-screen bg-gradient-to-b from-black'></div>
         <img
@@ -22,7 +22,7 @@ const Main = () => {
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt={movie?.title}
         />
-        <div className='w-full absolute top-[70%] sm:top-[30%] p-4 md:p-8'>
+        <div className='w-full absolute bottom-[5%] sm:bottom-[10%] p-4 md:p-8'>
           <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
           <div className='my-4'>
             <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>

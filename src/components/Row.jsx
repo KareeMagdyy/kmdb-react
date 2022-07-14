@@ -27,7 +27,7 @@ const Row = ({ title, fetchURL, rowId }) => {
         <MdChevronLeft
           onClick={slideLeft}
           size={40}
-          className='absolute left-1 bg-white rounded-full opacity-40 hover:opacity-100 z-10 cursor-pointer hidden group-hover:block'
+          className='absolute left-1 bg-white rounded-full opacity-40 hover:opacity-100 z-[15] cursor-pointer hidden group-hover:block'
         />
         <div
           id={`slider ${rowId}`}
@@ -40,7 +40,7 @@ const Row = ({ title, fetchURL, rowId }) => {
         <MdChevronRight
           onClick={slideRight}
           size={40}
-          className='absolute right-1 bg-white rounded-full ml-2 opacity-40 hover:opacity-100 z-10 cursor-pointer hidden group-hover:block'
+          className='absolute right-1 bg-white rounded-full ml-2 opacity-40 hover:opacity-100 z-[15]  cursor-pointer hidden group-hover:block'
         />
       </div>
     </>

@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import unavailable from "../assets/image-unavailable.jpg";
 
 const Movie = ({ movie }) => {
   const [isLiked, setIsLiked] = useState(false);
   const likeClickHandler = () => setIsLiked(!isLiked);
 
   return (
-    <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-10  '>
+    <div className='w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-[5]  '>
       <img
         className='w-full h-auto block'
-        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        src={
+          movie.backdrop_path !== null
+            ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+            : unavailable
+        }
         alt={movie.title || movie.name}
       />
       <div className='absolute inset-2 hover:bg-black/80 text-white opacity-0  hover:opacity-100 transition-all'>
