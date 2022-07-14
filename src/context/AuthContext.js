@@ -14,12 +14,12 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const signUp = async (email, password, firstName, lastName) => {
-    if (!email || !password || firstName || lastName) return;
+    if (!email || !password || !firstName || !lastName) return;
     await createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, "users", email), {
       firstName: firstName,
       lastName: lastName,
-      created: new Date(),
+      created: new Date().toISOString(),
       savedShows: [],
     });
   };
