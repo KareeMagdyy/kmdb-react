@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import requests from "../Requests";
 
@@ -24,15 +25,17 @@ const Main = () => {
           alt={movie?.title}
         />
         <div className='w-full absolute bottom-[5%] sm:bottom-[10%] p-4 md:p-8'>
-          <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
-          <div className='my-4'>
-            <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
-              Play
+          <h1 className='text-3xl md:text-5xl font-bold w-[25ch]'>
+            {movie?.title}
+          </h1>
+          <Link to={`movie/${movie?.id}`}>
+            <button className='border my-4 bg-gray-300 text-black border-gray-300 py-2 px-5'>
+              Watch Trailer
             </button>
-            <button className='border  text-white border-gray-300 py-2 px-5 ml-4'>
-              Watch Later
-            </button>
-          </div>
+            {/* <button className='border my-4  text-white border-gray-300 py-2 px-5 '>
+              Watch Trailer
+            </button> */}
+          </Link>
           <p className='text-gray-400 text-small'>
             Released:{" "}
             {new Date(movie?.release_date).toLocaleDateString("en-GB")}

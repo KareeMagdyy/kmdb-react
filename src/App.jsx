@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GetStarted from "./pages/GetStarted";
+import MovieDetails from "./pages/MovieDetails";
 
 const App = () => {
   return (
@@ -26,6 +27,15 @@ const App = () => {
           <Route path='/get-started' element={<GetStarted />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+
+          <Route
+            path='/movie/:id'
+            element={
+              <ProtectedRoute>
+                <MovieDetails />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path='/account'

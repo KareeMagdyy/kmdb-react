@@ -18,7 +18,7 @@ const Signup = () => {
     setErr("");
     try {
       await signUp(email, password, firstName, lastName);
-      err.length === 0 && navigate("/");
+      !err && navigate("/");
     } catch (error) {
       console.log(error.code);
       setErr(error.code);
@@ -42,6 +42,11 @@ const Signup = () => {
               {err === "auth/email-already-in-use" && (
                 <p className='bg-red-800 rounded font-bold p-2 mt-3'>
                   Email Already Exist
+                </p>
+              )}
+              {err === "auth/weak-password" && (
+                <p className='bg-red-800 rounded font-bold p-2 mt-3'>
+                  Weak Password
                 </p>
               )}
               <form
