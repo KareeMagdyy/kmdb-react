@@ -19,6 +19,7 @@ export const AuthContextProvider = ({ children }) => {
     setDoc(doc(db, "users", email), {
       firstName: firstName,
       lastName: lastName,
+      displayName: `${firstName} ${lastName}`,
       created: new Date().toISOString(),
       savedShows: [],
     });
