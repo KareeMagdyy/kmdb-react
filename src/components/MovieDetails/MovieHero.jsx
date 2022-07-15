@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
+import { db } from "../../firebase";
+import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { BsFillStarFill } from "react-icons/bs";
+import { MdBookmarkAdd, MdBookmarkAdded } from "react-icons/md";
 
 const MovieHero = ({ movieDetails, movieVideos }) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const { user } = UserAuth();
+  const navigate = useNavigate();
   const randomVideo =
     movieVideos[Math.floor(Math.random() * movieVideos.length)]?.key;
-
+  const youTubeURL = "https://www.youtube.com/embed/";
   const timeConvert = (n) => {
     let num = n;
     let hours = num / 60;
@@ -16,7 +26,54 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
     );
   };
 
-  const youTubeURL = "https://www.youtube.com/embed/";
+  const movieId = doc(db, "users", `${user?.email}`);
+  const saveMovie = async () => {
+    if (user?.email) {
+      setIsLiked(true);
+      await updateDoc(movieId, {
+        savedShows: arrayUnion({
+          id: movieDetails.id,
+          title: movieDetails.title,
+          img: movieDetails.backdrop_path,
+        }),
+      });
+    } else {
+      navigate("/");
+    }
+  };
+  const deleteShow = async (id) => {
+    try {
+      const result = movies.filter((movie) => movie.id !== id);
+      await updateDoc(movieId, {
+        savedShows: result,
+      });
+      setIsLiked(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      setMovies(doc.data()?.savedShows);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      setMovies(doc.data()?.savedShows);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.email]);
+
+  useEffect(() => {
+    if (movies?.find((m) => m.id === movieDetails.id)) {
+      setIsLiked(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movies]);
+
   return (
     <>
       <div className='w-full text-white'>
@@ -42,18 +99,32 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
           <h2>Released: {movieDetails?.release_date}</h2>
           <h2>Duration: {timeConvert(movieDetails?.runtime)}</h2>
         </div>
-        <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4 top-[50%] lg:top-[35%]'>
-          <img
-            className='max-w-[300px] lg:w-[40%] px-4 mx-auto lg:mx-0'
-            src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`}
-            alt='/'
-          />
+        <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4 top-[50%] lg:top-[35%] '>
+          <div className='w-[300px] relative'>
+            <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all'>
+              {!isLiked ? (
+                <span onClick={saveMovie}>
+                  <MdBookmarkAdd size={75} />
+                </span>
+              ) : (
+                <span onClick={() => deleteShow(movieDetails?.id)}>
+                  <MdBookmarkAdded size={75} />
+                </span>
+              )}
+            </div>
+            <img
+              className='max-w-full  px-4 mx-auto lg:mx-0'
+              src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`}
+              alt='/'
+            />
+          </div>
           {movieVideos.length > 0 && (
             <iframe
               className='w-[90%] h-[400px] lg:w-[60%]'
               title={movieDetails?.title || movieDetails?.name}
-              frameborder='0'
+              frameBorder='0'
               src={youTubeURL + randomVideo}
+              allowFullScreen
             ></iframe>
           )}
         </div>

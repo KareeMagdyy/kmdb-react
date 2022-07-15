@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
-import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import unavailable from "../assets/image-unavailable.jpg";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const SavedShows = () => {
   const [movies, setMovies] = useState([]);
@@ -25,18 +25,6 @@ const SavedShows = () => {
     });
   }, [user?.email]);
 
-  const movieRef = doc(db, "users", `${user?.email}`);
-  const deleteShow = async (id) => {
-    try {
-      const result = movies.filter((movie) => movie.id !== id);
-      await updateDoc(movieRef, {
-        savedShows: result,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       <h2 className='text-white text-xl font-bold p-4 md:text-xl'>My Shows</h2>
@@ -55,26 +43,22 @@ const SavedShows = () => {
               key={id}
               className='w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-[5]  '
             >
-              <img
-                className='w-full h-auto block'
-                src={
-                  movie.backdrop_path !== null
-                    ? `https://image.tmdb.org/t/p/w500${movie.img}`
-                    : unavailable
-                }
-                alt={movie.title || movie.name}
-              />
-              <div className='absolute inset-2 hover:bg-black/80 text-white opacity-0  hover:opacity-100 transition-all'>
-                <p className='flex items-center justify-center font-bold whitespace-normal text-xs md:text-sm text-center h-full'>
-                  {movie.title || movie.name}
-                </p>
-                <p
-                  onClick={() => deleteShow(movie.id)}
-                  className='absolute text-gray-300 top-2 right-2'
-                >
-                  <RiDeleteBinLine size={18} />
-                </p>
-              </div>
+              <Link to={`/movie/${movie.id}`}>
+                <img
+                  className='w-full h-auto block'
+                  src={
+                    movie.backdrop_path !== null
+                      ? `https://image.tmdb.org/t/p/w500${movie.img}`
+                      : unavailable
+                  }
+                  alt={movie.title || movie.name}
+                />
+                <div className='absolute inset-2 hover:bg-black/80 text-white opacity-0  hover:opacity-100 transition-all'>
+                  <p className='flex items-center justify-center font-bold whitespace-normal text-xs md:text-sm text-center h-full'>
+                    {movie.title || movie.name}
+                  </p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

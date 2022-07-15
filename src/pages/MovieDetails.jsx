@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
 import MovieHero from "../components/MovieDetails/MovieHero";
 import MovieInfo from "../components/MovieDetails/MovieInfo";
 
@@ -9,7 +10,7 @@ const MovieDetails = () => {
   const [movieVideos, setMovieVideos] = useState([]);
   const [movieCast, setMovieCast] = useState({});
 
-  let params = useParams();
+  const params = useParams();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
   const getMovieDetails = (id) => {

@@ -8,12 +8,11 @@ const MovieInfo = ({ movieDetails, movieCast }) => {
     (person) => person.department === "Writing"
   );
 
-  console.log(writers);
   return (
     <>
       <div className='text-white p-6 '>
         {/* Genre */}
-        <div className='rounded flex  gap-3 '>
+        <div className='rounded flex flex-wrap  gap-3 '>
           {(movieDetails?.genres || []).map((genre, id) => (
             <p key={id} className='border-white border rounded-full px-5 py-2 '>
               {genre.name}
