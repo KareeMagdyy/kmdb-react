@@ -16,17 +16,17 @@ const Main = () => {
   }, []);
 
   return (
-    <div className='w-full relative  h-[55vh] md:h-screen text-white'>
+    <div className='w-full relative  h-[55vh] md:h-screen text-white  '>
       <div className='w-full h-full'>
         <div className='absolute w-full h-[55vh]  bg-gradient-to-b from-black'></div>
-        <div className='absolute w-full h-[55vh] md:h-screen bottom-0 bg-gradient-to-t from-black'></div>
+        <div className='absolute w-full h-[55vh] md:h-screen bottom-[-1px] bg-gradient-to-t from-black'></div>
         <img
           className='w-full h-full object-cover'
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt={movie?.title}
         />
         <div className='w-full absolute bottom-[5%] sm:bottom-[10%] p-4 md:p-8'>
-          <h1 className='text-3xl md:text-5xl font-bold w-[25ch]'>
+          <h1 className='text-3xl md:text-5xl font-bold max-w-[25ch]'>
             {movie?.title}
           </h1>
           <Link to={`movie/${movie?.id}`}>

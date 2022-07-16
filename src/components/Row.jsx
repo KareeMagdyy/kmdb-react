@@ -21,7 +21,7 @@ const Row = ({ title, fetchURL, rowId }) => {
   };
 
   return (
-    <>
+    <section className='container mx-auto'>
       <h2 className='text-white font-bold px-4 pt-4 pb-2 md:text-xl'>
         {title}
       </h2>
@@ -33,7 +33,7 @@ const Row = ({ title, fetchURL, rowId }) => {
         />
         <div
           id={`slider ${rowId}`}
-          className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'
+          className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative '
         >
           {movies.map((movie, id) => (
             <Movie movie={movie} key={id} />
@@ -45,7 +45,7 @@ const Row = ({ title, fetchURL, rowId }) => {
           className='absolute right-1 bg-white rounded-full ml-2 opacity-40 hover:opacity-100 z-[15]  cursor-pointer hidden group-hover:block'
         />
       </div>
-    </>
+    </section>
   );
 };
 

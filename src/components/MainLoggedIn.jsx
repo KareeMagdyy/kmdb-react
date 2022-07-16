@@ -4,7 +4,7 @@ import requests from "../Requests";
 
 const MainLoggedIn = () => {
   return (
-    <>
+    <main>
       <Main />
       <Row
         rowId='playingNow'
@@ -27,7 +27,7 @@ const MainLoggedIn = () => {
         fetchURL={requests?.requestTopRated}
       />
       <Row rowId='popular' title='Popular' fetchURL={requests.requestPopular} />
-    </>
+    </main>
   );
 };
 
