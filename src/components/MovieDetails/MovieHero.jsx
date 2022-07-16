@@ -94,7 +94,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
           <div className='bg-gradient-to-b from-black absolute w-full h-[400px] left-0 top-0'></div>
           <div className='bg-gradient-to-t from-black absolute w-full h-[300px] left-0 bottom-0'></div>
         </div>
-        <div className='flex text-center flex-col gap-2 lg:flex-row lg:gap-10 p-6 text-gray-300 text-xl lg:text-2xl'>
+        <div className='flex text-center flex-col gap-2 lg:flex-row lg:gap-10 p-6 text-gray-300 text-xl lg:text-2xl container mx-auto'>
           <div>
             <div className='flex items-center justify-center gap-2  '>
               <BsFillStarFill color='gold' size={20} />
@@ -104,7 +104,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
           <h2>Released: {movieDetails?.release_date}</h2>
           <h2>Duration: {timeConvert(movieDetails?.runtime)}</h2>
         </div>
-        <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4 top-[50%] lg:top-[35%] '>
+        <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4  container mx-auto'>
           <div className='w-[300px] relative'>
             <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all'>
               {!isLiked ? (

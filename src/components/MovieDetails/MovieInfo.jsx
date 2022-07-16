@@ -10,7 +10,7 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
 
   return (
     <>
-      <div className='text-white p-6 '>
+      <div className='text-white p-6 container mx-auto'>
         {/* Genre */}
         <div className='rounded flex flex-wrap  gap-3 '>
           {(movieDetails?.genres || []).map((genre, id) => (
@@ -23,7 +23,7 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
         <p className='py-4 lg:max-w-[75ch] font-semibold text-lg'>
           {movieDetails?.overview}
         </p>
-        <p className='bg-gray-400 w-[90%] lg:w-[80ch] h-[1px]'></p>
+        <p className='bg-red-600 w-[90%] lg:w-[80ch] h-[1px]'></p>
         {/* Director */}
         <div className='py-4 lg:max-w-[75ch]  text-lg'>
           <span className='font-bold text-white mr-2'>Director:</span>
@@ -31,7 +31,7 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
             <span key={id}>{e.name}</span>
           ))}
         </div>
-        <p className='bg-gray-400 w-[90%] lg:w-[80ch] h-[1px]'></p>
+        <p className='bg-red-600 w-[90%] lg:w-[80ch] h-[1px]'></p>
 
         <div className=' py-4 flex flex-col md:flex-row gap-3 lg:gap-10  lg:w-[60ch] overflow-hidden'>
           {/* Writer */}
@@ -48,7 +48,7 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
               ))}
             </div>
           </div>
-          <p className='bg-gray-400 w-[90%] h-[1px] mt-4 md:mt-0 md:w-[1px] md:h-48 '></p>
+          <p className='bg-red-600 w-[90%] h-[1px] mt-4 md:mt-0 md:w-[1px] md:h-48 '></p>
           {/* Production Companies */}
           <div>
             <h2 className='font-bold text-2xl py-2'>Production </h2>
@@ -59,6 +59,7 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
             </div>
           </div>
         </div>
+        <p className='bg-red-600 w-[90%] lg:w-[80ch] h-[1px]'></p>
       </div>
     </>
   );

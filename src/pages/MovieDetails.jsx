@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import MovieHero from "../components/MovieDetails/MovieHero";
 import MovieInfo from "../components/MovieDetails/MovieInfo";
+import MovieCast from "../components/MovieDetails/MovieCast";
+import MovieVids from "../components/MovieDetails/MovieVids";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -47,6 +49,8 @@ const MovieDetails = () => {
         movieDetails={movieDetails}
         movieCastAndCrew={movieCastAndCrew}
       />
+      <MovieVids movieVideos={movieVideos} />
+      <MovieCast movieCastAndCrew={movieCastAndCrew} />
     </>
   );
 };
