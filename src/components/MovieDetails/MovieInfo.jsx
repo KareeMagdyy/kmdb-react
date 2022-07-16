@@ -12,9 +12,13 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
     <>
       <div className='text-white p-6 container mx-auto'>
         {/* Genre */}
-        <div className='rounded flex flex-wrap  gap-3 '>
+        <div className=' flex flex-wrap  gap-3 '>
           {(movieDetails?.genres || []).map((genre, id) => (
-            <p key={id} className='border-white border rounded-full px-5 py-2 '>
+            <p
+              key={id}
+              className='border-white border rounded-full px-5 py-2  
+              '
+            >
               {genre.name}
             </p>
           ))}
