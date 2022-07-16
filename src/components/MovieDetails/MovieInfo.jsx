@@ -56,6 +56,21 @@ const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
               {movieDetails["production_companies"]?.map((comp) => (
                 <p key={comp.id}>{comp.name}</p>
               ))}
+              {(movieDetails.budget > 0 || movieDetails.revenue > 0) && (
+                <p className='bg-red-600 w-[25%]  h-[1px]'></p>
+              )}
+              {movieDetails.budget > 0 && (
+                <p>
+                  <span className='font-bold mr-2'>Budget:</span> $
+                  {movieDetails.budget.toLocaleString()}
+                </p>
+              )}
+              {movieDetails.revenue > 0 && (
+                <p>
+                  <span className='font-bold mr-2'>Revenue: </span>$
+                  {movieDetails.revenue.toLocaleString()}
+                </p>
+              )}
             </div>
           </div>
         </div>
