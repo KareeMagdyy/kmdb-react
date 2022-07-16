@@ -7,22 +7,26 @@ const MainLoggedIn = () => {
     <>
       <Main />
       <Row
-        rowId='upcoming'
-        title='Upcoming'
-        fetchURL={requests.requestUpcoming}
+        rowId='playingNow'
+        title='Playing Now'
+        fetchURL={requests?.requestPlayingNow}
       />
       <Row
-        rowId='trending'
-        title='Trending'
-        fetchURL={requests.requestTrending}
+        rowId='eg'
+        title='Egyptian Movies'
+        fetchURL={requests?.requestEGNow}
+      />
+      <Row
+        rowId='EGY-Popular'
+        title='Popular In Egypt'
+        fetchURL={requests?.requestEGPopular}
       />
       <Row
         rowId='toprated'
         title='TopRated'
-        fetchURL={requests.requestTopRated}
+        fetchURL={requests?.requestTopRated}
       />
       <Row rowId='popular' title='Popular' fetchURL={requests.requestPopular} />
-      <Row rowId='horror' title='Horror' fetchURL={requests.requestHorror} />
     </>
   );
 };

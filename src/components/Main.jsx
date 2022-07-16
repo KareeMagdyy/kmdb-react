@@ -18,7 +18,8 @@ const Main = () => {
   return (
     <div className='w-full relative  h-[55vh] md:h-screen text-white'>
       <div className='w-full h-full'>
-        <div className='absolute w-full h-screen bg-gradient-to-b from-black'></div>
+        <div className='absolute w-full h-[55vh]  bg-gradient-to-b from-black'></div>
+        <div className='absolute w-full h-[55vh] md:h-screen bottom-0 bg-gradient-to-t from-black'></div>
         <img
           className='w-full h-full object-cover'
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}

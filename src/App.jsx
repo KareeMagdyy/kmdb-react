@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GetStarted from "./pages/GetStarted";
 import MovieDetails from "./pages/MovieDetails";
+import MoviesGenre from "./pages/MoviesGenre";
 
 const App = () => {
   return (
@@ -33,6 +34,15 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <MovieDetails />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/movieGenre/:genre'
+            element={
+              <ProtectedRoute>
+                <MoviesGenre />
               </ProtectedRoute>
             }
           />

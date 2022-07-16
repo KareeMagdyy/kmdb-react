@@ -106,7 +106,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
         </div>
         <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4  container mx-auto'>
           <div className='w-[300px] relative'>
-            <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all'>
+            <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all z-10'>
               {!isLiked ? (
                 <span onClick={saveMovie}>
                   <MdBookmarkAdd size={75} />
@@ -117,6 +117,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
                 </span>
               )}
             </div>
+            <div className='bg-gradient-to-b from-black/50 absolute w-full h-[200px] left-0 top-0'></div>
             <img
               className='max-w-full  px-4 mx-auto lg:mx-0'
               src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`}
