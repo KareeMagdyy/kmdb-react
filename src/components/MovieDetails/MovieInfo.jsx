@@ -1,10 +1,10 @@
 import React from "react";
 
-const MovieInfo = ({ movieDetails, movieCast }) => {
-  const director = movieCast.crew?.filter(
+const MovieInfo = ({ movieDetails, movieCastAndCrew }) => {
+  const director = movieCastAndCrew.crew?.filter(
     (person) => person.job === "Director"
   );
-  const writers = movieCast.crew?.filter(
+  const writers = movieCastAndCrew.crew?.filter(
     (person) => person.department === "Writing"
   );
 

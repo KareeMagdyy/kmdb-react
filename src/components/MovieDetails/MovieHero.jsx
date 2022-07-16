@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
-import { arrayUnion, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { BsFillStarFill } from "react-icons/bs";
 import { MdBookmarkAdd, MdBookmarkAdded } from "react-icons/md";
 
@@ -53,13 +53,12 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
     }
   };
 
-  useEffect(() => {
-    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
-      setMovies(doc.data()?.savedShows);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  // useEffect(() => {
+  //   onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+  //     setMovies(doc.data()?.savedShows);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setMovies(doc.data()?.savedShows);
@@ -73,6 +72,12 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies]);
+  useEffect(() => {
+    if (movies?.find((m) => m.id === movieDetails.id)) {
+      setIsLiked(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movieDetails]);
 
   return (
     <>
