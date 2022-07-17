@@ -1,4 +1,4 @@
-import React from "react";
+import unavailable from "../../assets/image-unavailable.jpg";
 
 const CastCard = ({ img, name, character }) => {
   const truncateString = (str, n) => {
@@ -8,7 +8,7 @@ const CastCard = ({ img, name, character }) => {
     <div className='rounded-xl overflow-hidden shadow-white/10 shadow-md min-w-[140px] w-[140px]  inline-block mx-2 text-center  '>
       <img
         className=' w-full '
-        src={`https://image.tmdb.org/t/p/w500${img}`}
+        src={img ? `https://image.tmdb.org/t/p/w500${img}` : unavailable}
         alt={name}
         loading='lazy'
       />
