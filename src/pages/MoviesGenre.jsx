@@ -52,6 +52,7 @@ const MoviesGenre = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt='/'
+                loading='lazy'
               />
 
               <div className='bg-gradient-to-t from-black absolute w-full h-[50px] left-0 bottom-0'></div>

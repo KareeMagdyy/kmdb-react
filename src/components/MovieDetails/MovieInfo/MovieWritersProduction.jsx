@@ -1,4 +1,4 @@
-import React from "react";
+import { v4 as uuid } from "uuid";
 
 const MovieWritersProduction = ({ movieDetails, movieCastAndCrew }) => {
   const writers = movieCastAndCrew.crew?.filter(
@@ -24,8 +24,8 @@ const MovieWritersProduction = ({ movieDetails, movieCastAndCrew }) => {
                 {writers?.length > 6 ? "Top Writers" : "Writers"}{" "}
               </h2>
               <div className='flex flex-col gap-1 text-left'>
-                {limitWriters?.map((writer, id) => (
-                  <div key={id}>
+                {limitWriters?.map((writer) => (
+                  <div key={uuid()}>
                     <span className='font-bold text-white mr-2'>
                       | {writer.job}:
                     </span>
@@ -42,7 +42,7 @@ const MovieWritersProduction = ({ movieDetails, movieCastAndCrew }) => {
                   <h2 className='font-bold text-2xl py-2'>Production </h2>
                   <div className='flex flex-col gap-1 '>
                     {movieDetails["production_companies"]?.map((comp) => (
-                      <p key={comp.id}>{comp.name}</p>
+                      <p key={uuid()}>{comp.name}</p>
                     ))}
                     {(movieDetails.budget > 0 || movieDetails.revenue > 0) && (
                       <p

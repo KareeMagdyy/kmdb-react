@@ -1,4 +1,4 @@
-import React from "react";
+import { v4 as uuid } from "uuid";
 
 const MovieOverview = ({ movieDetails, movieCastAndCrew }) => {
   const director = movieCastAndCrew.crew?.filter(
@@ -11,7 +11,7 @@ const MovieOverview = ({ movieDetails, movieCastAndCrew }) => {
         <p className='py-4'>
           <span className='font-semibold'>Country: </span>
           {movieDetails["production_countries"]?.map((country, idx) => (
-            <span>
+            <span key={uuid()}>
               {country.name}
               {idx === movieDetails["production_countries"]?.length - 1
                 ? ""
@@ -22,7 +22,7 @@ const MovieOverview = ({ movieDetails, movieCastAndCrew }) => {
         <p className='pb-3'>
           <span className='font-semibold'>Language: </span>
           {movieDetails["spoken_languages"]?.map((lang, idx) => (
-            <span>
+            <span key={uuid()}>
               {lang.english_name}
               {idx === movieDetails["spoken_languages"]?.length - 1 ? "" : ", "}
             </span>
@@ -35,7 +35,7 @@ const MovieOverview = ({ movieDetails, movieCastAndCrew }) => {
           <div className='py-4 lg:max-w-[75ch]  text-lg'>
             <span className='font-bold text-white mr-2'>Director:</span>
             {director?.map((e, id) => (
-              <span key={id}>{e.name}</span>
+              <span key={uuid()}>{e.name}</span>
             ))}
           </div>
           <p className='bg-red-600 w-[90%] lg:w-[80ch] h-[1px]'></p>

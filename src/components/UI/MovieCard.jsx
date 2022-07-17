@@ -9,6 +9,7 @@ const MovieCard = ({ movie, img }) => {
     <div className='w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-[5]  '>
       <Link to={`/movie/${movie.id}`}>
         <img
+          loading='lazy'
           className='w-full h-auto max-h-[350px] block'
           src={`https://image.tmdb.org/t/p/w500${img}`}
           alt={movie.title || movie.name}

@@ -27,6 +27,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
   };
 
   const movieId = doc(db, "users", `${user?.email}`);
+
   const saveMovie = async () => {
     if (user?.email) {
       setIsLiked(true);
@@ -53,12 +54,6 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
     }
   };
 
-  // useEffect(() => {
-  //   onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
-  //     setMovies(doc.data()?.savedShows);
-  //   });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
   useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setMovies(doc.data()?.savedShows);
@@ -75,6 +70,8 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
   useEffect(() => {
     if (movies?.find((m) => m.id === movieDetails.id)) {
       setIsLiked(true);
+    } else {
+      setIsLiked(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetails]);
@@ -134,6 +131,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
               frameBorder='0'
               src={youTubeURL + randomVideo}
               allowFullScreen
+              loading='lazy'
             ></iframe>
           )}
         </div>

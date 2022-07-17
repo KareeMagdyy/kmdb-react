@@ -22,6 +22,8 @@ const PlainRow = ({ title, rowId, children, classes = "" }) => {
           size={40}
           className='absolute left-1 bg-white rounded-full opacity-40 hover:opacity-100 z-[15] cursor-pointer hidden group-hover:block'
         />
+        <div className='bg-gradient-to-r from-black h-full w-[75px] absolute left-0 top-0 z-[10]'></div>
+        <div className='bg-gradient-to-l from-black h-full w-[75px] absolute right-0 top-0 z-[10]'></div>
         <div
           id={`slider ${rowId}`}
           className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative '

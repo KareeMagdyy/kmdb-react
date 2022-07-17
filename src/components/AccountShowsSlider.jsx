@@ -32,6 +32,7 @@ const AccountShowsSlider = ({ movies, title }) => {
             >
               <Link to={`/movie/${movie.id}`}>
                 <img
+                  loading='lazy'
                   className='w-full h-auto block'
                   src={
                     movie.backdrop_path !== null

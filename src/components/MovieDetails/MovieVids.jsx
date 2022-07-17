@@ -18,6 +18,7 @@ const MovieVids = ({ movieVideos }) => {
                     frameBorder='0'
                     src={youTubeURL + video.key}
                     allowFullScreen
+                    loading='lazy'
                   ></iframe>
                 </div>
               ))}
