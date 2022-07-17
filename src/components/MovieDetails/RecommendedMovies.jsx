@@ -6,7 +6,6 @@ const RecommendedMovies = ({ moviesRecommended }) => {
   const children = moviesRecommended.map((movie) => (
     <MovieCard key={movie.id} movie={movie} img={movie.poster_path} />
   ));
-  console.log(moviesRecommended);
 
   return (
     <PlainRow

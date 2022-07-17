@@ -26,12 +26,12 @@ const MainLoggedIn = () => {
         title='Popular In Egypt'
         fetchURL={requests?.requestEGPopular}
       />
+
       <Row
         rowId='toprated'
         title='TopRated'
         fetchURL={requests?.requestTopRated}
       />
-      <Row rowId='popular' title='Popular' fetchURL={requests.requestPopular} />
     </main>
   );
 };
