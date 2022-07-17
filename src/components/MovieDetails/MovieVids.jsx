@@ -4,7 +4,7 @@ const MovieVids = ({ movieVideos }) => {
 
   return (
     <>
-      {videos.length > 0 && (
+      {videos.length > 1 && (
         <>
           <div className='container mx-auto text-white p-6'>
             <h1 className='text-4xl  font-bold mb-5'>More Videos</h1>

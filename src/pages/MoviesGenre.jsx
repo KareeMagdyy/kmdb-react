@@ -44,17 +44,20 @@ const MoviesGenre = () => {
       </div>
       <div className='bg-black text-white container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 p-6 gap-5 mt-5 '>
         {moviesByGenre.map((movie) => (
-          <div key={movie?.id} className='rounded-xl overflow-hidden '>
+          <div
+            key={movie?.id}
+            className='rounded-xl overflow-hidden shadow-white/10 shadow-md'
+          >
             <Link to={`/movie/${movie.id}`} className='relative cursor-pointer'>
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt='/'
               />
 
-              <div className='bg-gradient-to-t from-slate-700 absolute w-full h-[30px] left-0 bottom-0'></div>
+              <div className='bg-gradient-to-t from-black absolute w-full h-[50px] left-0 bottom-0'></div>
             </Link>
 
-            <div className='bg-slate-700 h-[75px] flex items-center justify-center text-white text-center'>
+            <div className=' h-[75px] flex items-center justify-center text-white text-center'>
               <Link to={`/movie/${movie?.id}`}>
                 <h1 className='font-bold hover:underline hover:text-gray-300 cursor-pointer'>
                   {truncateString(movie?.title, 30)}

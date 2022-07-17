@@ -101,7 +101,10 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
               <p>{movieDetails.vote_average}/10</p>
             </div>
           </div>
-          <h2>Released: {movieDetails?.release_date}</h2>
+          <h2>
+            Released:{" "}
+            {new Date(movieDetails?.release_date).toLocaleDateString("en-GB")}
+          </h2>
           <h2>Duration: {timeConvert(movieDetails?.runtime)}</h2>
         </div>
         <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4  container mx-auto'>

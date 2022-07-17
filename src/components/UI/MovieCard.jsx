@@ -1,28 +1,16 @@
-// import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { FaHeart, FaRegHeart } from "react-icons/fa";
-import unavailable from "../assets/image-unavailable.jpg";
 
-const Movie = ({ movie }) => {
-  // const [savedMoviesOnDB, setSavedMoviesOnDB] = useState([]);
-
-  // useEffect(() => {
-  //   onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
-  //     setSavedMoviesOnDB(doc.data()?.savedShows);
-  //   });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+const MovieCard = ({ movie, img }) => {
+  if (!img) {
+    return;
+  }
 
   return (
     <div className='w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-[5]  '>
       <Link to={`/movie/${movie.id}`}>
         <img
-          className='w-full h-auto block'
-          src={
-            movie.backdrop_path !== null
-              ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-              : unavailable
-          }
+          className='w-full h-auto max-h-[350px] block'
+          src={`https://image.tmdb.org/t/p/w500${img}`}
           alt={movie.title || movie.name}
         />
 
@@ -43,4 +31,4 @@ const Movie = ({ movie }) => {
   );
 };
 
-export default Movie;
+export default MovieCard;

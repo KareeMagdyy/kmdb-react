@@ -5,11 +5,13 @@ import MovieHero from "../components/MovieDetails/MovieHero";
 import MovieInfo from "../components/MovieDetails/MovieInfo";
 import MovieCast from "../components/MovieDetails/MovieCast";
 import MovieVids from "../components/MovieDetails/MovieVids";
+import RecommendedMovies from "../components/MovieDetails/RecommendedMovies";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [movieVideos, setMovieVideos] = useState([]);
   const [movieCastAndCrew, setMovieCastAndCrew] = useState({});
+  const [moviesRecommended, setMoviesRecommended] = useState([]);
   const params = useParams();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
@@ -34,11 +36,23 @@ const MovieDetails = () => {
       )
       .then((res) => setMovieCastAndCrew(res.data));
   };
+  const getRecommended = (id) => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`
+      )
+      .then((res) => setMoviesRecommended(res.data.results));
+  };
 
   useEffect(() => {
     getMovieDetails(params.id);
     getMovieVideos(params.id);
-    getCastAndCrew(params.id);
+    setTimeout(() => {
+      getCastAndCrew(params.id);
+    }, 1000);
+    setTimeout(() => {
+      getRecommended(params.id);
+    }, 3000);
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
@@ -52,6 +66,7 @@ const MovieDetails = () => {
       />
       <MovieVids movieVideos={movieVideos} />
       <MovieCast movieCastAndCrew={movieCastAndCrew} />
+      <RecommendedMovies moviesRecommended={moviesRecommended} />
     </>
   );
 };

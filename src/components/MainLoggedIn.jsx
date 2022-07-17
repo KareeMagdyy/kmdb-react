@@ -12,8 +12,13 @@ const MainLoggedIn = () => {
         fetchURL={requests?.requestPlayingNow}
       />
       <Row
+        rowId='trending'
+        title='Trending Now'
+        fetchURL={requests?.requestTrending}
+      />
+      <Row
         rowId='eg'
-        title='Egyptian Movies'
+        title='Playing Now In Egypt'
         fetchURL={requests?.requestEGNow}
       />
       <Row
