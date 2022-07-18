@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import GetStarted from "./pages/GetStarted";
 import MovieDetails from "./pages/MovieDetails";
 import MoviesGenre from "./pages/MoviesGenre";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/get-started' element={<GetStarted />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
 
           <Route
             path='/movie/:id'

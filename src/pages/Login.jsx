@@ -90,7 +90,11 @@ const Login = () => {
                     />{" "}
                     Remember me
                   </label>
-                  <p>Need Help?</p>
+                  <Link to='/reset-password'>
+                    <p className='hover:underline cursor-pointer'>
+                      Forgot my Password!
+                    </p>
+                  </Link>
                 </div>
                 <p className='py-4 mt-6 text-center'>
                   <span className='text-gray-500 mr-1 '>New to Kmflix?</span>{" "}
