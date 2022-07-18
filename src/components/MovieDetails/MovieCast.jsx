@@ -11,6 +11,7 @@ const MovieCast = ({ movieCastAndCrew }) => {
       img={actor.profile_path}
       name={actor.name}
       character={actor.character}
+      gender={actor.gender}
     />
   ));
 
