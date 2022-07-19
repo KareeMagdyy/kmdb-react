@@ -14,13 +14,6 @@ const PersonInfo = () => {
   const params = useParams();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
-  // SortFilmography
-  const concatFilmography = filmography.cast?.concat(filmography.crew);
-  const sortedFilmography = concatFilmography?.sort(
-    (a, b) => new Date(a.release_date) - new Date(b.release_date)
-  );
-  const filmographyUsed = sortedFilmography?.reverse();
-
   const getInfo = async (id) => {
     axios
       .get(
@@ -64,7 +57,7 @@ const PersonInfo = () => {
             <div className='col-auto lg:col-span-2 text-white'>
               <PersonBiography info={info} />
               <PersonKnownFor castAsActor={filmography?.cast} />
-              <PersonFilmography filmography={filmographyUsed} />
+              <PersonFilmography filmography={filmography} />
             </div>
           </div>
         </section>

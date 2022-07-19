@@ -73,7 +73,9 @@ const PersonSideBar = ({ info, social, classes }) => {
         </div>
       )}
       <div className='text-left py-5 w-[85%] mt-2 mx-auto lg:mx-0'>
-        <h2 className='text-2xl font-medium py-1'>Personal Info</h2>
+        <h2 className='text-2xl font-medium lg:font-bold py-1'>
+          Personal Info
+        </h2>
         <div className='bg-red-600 w-[50px] h-[2px] mb-3'></div>
         <div className='py-2'>
           <p className='font-bold text-lg'>Known For</p>

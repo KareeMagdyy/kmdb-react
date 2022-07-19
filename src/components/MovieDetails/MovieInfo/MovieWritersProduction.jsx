@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 const MovieWritersProduction = ({ movieDetails, movieCastAndCrew }) => {
@@ -29,7 +30,9 @@ const MovieWritersProduction = ({ movieDetails, movieCastAndCrew }) => {
                     <span className='font-bold text-white mr-2'>
                       | {writer.job}:
                     </span>
-                    <span>{writer.name}</span>
+                    <Link to={`/person/${writer.id}`}>
+                      <span>{writer.name}</span>
+                    </Link>
                   </div>
                 ))}
               </div>
