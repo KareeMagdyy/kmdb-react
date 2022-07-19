@@ -28,7 +28,7 @@ const CastCard = ({ actor }) => {
         <div className='absolute bg-gradient-to-t from-black bottom-0 left-0 w-full h-[40px]'></div>
       </div>
       <Link to={`/person/${actor.id}`}>
-        <p className=' p-2 text-white text-sm font-bold'>
+        <p className=' p-2 text-white text-sm font-bold hover:underline hover:text-gray-400'>
           {truncateString(actor.name, 15)}
         </p>
       </Link>

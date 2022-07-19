@@ -6,6 +6,7 @@ import MovieInfo from "../components/MovieDetails/MovieInfo";
 import MovieCast from "../components/MovieDetails/MovieCast";
 import MovieVids from "../components/MovieDetails/MovieVids";
 import RecommendedMovies from "../components/MovieDetails/RecommendedMovies";
+import BlockAdultContent from "../components/UI/BlockAdultContent";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -39,7 +40,7 @@ const MovieDetails = () => {
   const getRecommended = (id) => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&include_adult=false&page=1`
       )
       .then((res) => setMoviesRecommended(res.data.results));
   };
@@ -59,14 +60,20 @@ const MovieDetails = () => {
 
   return (
     <>
-      <MovieHero movieDetails={movieDetails} movieVideos={movieVideos} />
-      <MovieInfo
-        movieDetails={movieDetails}
-        movieCastAndCrew={movieCastAndCrew}
-      />
-      <MovieVids movieVideos={movieVideos} />
-      <MovieCast movieCastAndCrew={movieCastAndCrew} />
-      <RecommendedMovies moviesRecommended={moviesRecommended} />
+      {!movieDetails.adult ? (
+        <>
+          <MovieHero movieDetails={movieDetails} movieVideos={movieVideos} />
+          <MovieInfo
+            movieDetails={movieDetails}
+            movieCastAndCrew={movieCastAndCrew}
+          />
+          <MovieVids movieVideos={movieVideos} />
+          <MovieCast movieCastAndCrew={movieCastAndCrew} />
+          <RecommendedMovies moviesRecommended={moviesRecommended} />
+        </>
+      ) : (
+        <BlockAdultContent />
+      )}
     </>
   );
 };

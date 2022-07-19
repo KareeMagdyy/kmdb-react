@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieCard from "../UI/MovieCard";
 import PlainRow from "../UI/PlainRow";
 
@@ -12,12 +12,16 @@ const RecommendedMovies = ({ moviesRecommended }) => {
     />
   ));
 
+  useEffect(() => {
+    window.scrollTo({ left: 0 });
+  }, [moviesRecommended]);
+
   return (
     <PlainRow
       title='More like this'
       rowID='recommended'
-      children={children}
       classes='p-6'
+      children={children}
     />
   );
 };

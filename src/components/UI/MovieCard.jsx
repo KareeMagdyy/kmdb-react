@@ -5,6 +5,10 @@ const MovieCard = ({ movie, img, classes = "" }) => {
     return;
   }
 
+  if (movie.adult) {
+    return;
+  }
+
   return (
     <div
       className={`w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative mx-2 overflow-hidden ${classes}`}

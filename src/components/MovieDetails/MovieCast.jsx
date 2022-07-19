@@ -3,9 +3,9 @@ import PlainRow from "../UI/PlainRow";
 import CastCard from "../UI/CastCard";
 
 const MovieCast = ({ movieCastAndCrew }) => {
-  let actors = movieCastAndCrew?.cast?.slice(0, 22);
+  const adultActorsOut = movieCastAndCrew?.cast?.filter((act) => !act.adult);
 
-  const renderActors = actors?.map((actor) => (
+  const renderActors = adultActorsOut?.map((actor) => (
     <CastCard key={uuid()} actor={actor} />
   ));
 

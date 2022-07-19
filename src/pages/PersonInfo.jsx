@@ -5,6 +5,7 @@ import PersonSideBar from "../components/PersonDetails/PersonSideBar";
 import PersonBiography from "../components/PersonDetails/PersonBiography";
 import PersonKnownFor from "../components/PersonDetails/PersonKnownFor";
 import PersonFilmography from "../components/PersonDetails/PersonFilmography";
+import BlockAdultContent from "../components/UI/BlockAdultContent";
 
 const PersonInfo = () => {
   const [info, setInfo] = useState([]);
@@ -51,20 +52,26 @@ const PersonInfo = () => {
   }, [params.id]);
 
   return (
-    <section className='container mx-auto pb-10 pt-[120px] '>
-      <div className='grid grid-cols-1 lg:grid-cols-3 mx-auto'>
-        <PersonSideBar
-          info={info}
-          social={social}
-          classes='col-auto lg:col-span-1 text-white text-center lg:text-left'
-        />
-        <div className='col-auto lg:col-span-2 text-white'>
-          <PersonBiography info={info} />
-          <PersonKnownFor castAsActor={filmography?.cast} />
-          <PersonFilmography filmography={filmographyUsed} />
-        </div>
-      </div>
-    </section>
+    <>
+      {!info.adult ? (
+        <section className='container mx-auto pb-10 pt-[120px] '>
+          <div className='grid grid-cols-1 lg:grid-cols-3 mx-auto'>
+            <PersonSideBar
+              info={info}
+              social={social}
+              classes='col-auto lg:col-span-1 text-white text-center lg:text-left'
+            />
+            <div className='col-auto lg:col-span-2 text-white'>
+              <PersonBiography info={info} />
+              <PersonKnownFor castAsActor={filmography?.cast} />
+              <PersonFilmography filmography={filmographyUsed} />
+            </div>
+          </div>
+        </section>
+      ) : (
+        <BlockAdultContent />
+      )}
+    </>
   );
 };
 
