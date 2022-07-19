@@ -10,6 +10,7 @@ import GetStarted from "./pages/GetStarted";
 import MovieDetails from "./pages/MovieDetails";
 import MoviesGenre from "./pages/MoviesGenre";
 import ResetPassword from "./pages/ResetPassword";
+import PersonInfo from "./pages/PersonInfo";
 
 const App = () => {
   return (
@@ -45,6 +46,15 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <MoviesGenre />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path='/person/:id'
+            element={
+              <ProtectedRoute>
+                <PersonInfo />
               </ProtectedRoute>
             }
           />

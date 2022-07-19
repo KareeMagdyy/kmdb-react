@@ -6,13 +6,7 @@ const MovieCast = ({ movieCastAndCrew }) => {
   let actors = movieCastAndCrew?.cast?.slice(0, 22);
 
   const renderActors = actors?.map((actor) => (
-    <CastCard
-      key={uuid()}
-      img={actor.profile_path}
-      name={actor.name}
-      character={actor.character}
-      gender={actor.gender}
-    />
+    <CastCard key={uuid()} actor={actor} />
   ));
 
   return (

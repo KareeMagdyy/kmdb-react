@@ -30,11 +30,7 @@ const MoviesGenre = () => {
   return (
     <>
       <div className='w-full h-[300px] relative'>
-        <img
-          className='w-full max-h-[300px] object-cover'
-          src={bgImg}
-          alt='/'
-        />
+        <img className='w-full h-[300px] object-cover' src={bgImg} alt='/' />
         <div className='bg-black/75 absolute w-full h-[300px] left-0 top-0'></div>
         <div className='bg-gradient-to-b from-black absolute w-full h-[120px] left-0 top-0'></div>
         <div className='bg-gradient-to-t from-black absolute w-full h-[120px] left-0 bottom-0'></div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
@@ -125,14 +126,19 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
             />
           </div>
           {movieVideos.length > 0 && (
-            <iframe
-              className='w-[90%] h-[400px] lg:w-[60%]'
-              title={movieDetails?.title || movieDetails?.name}
-              frameBorder='0'
-              src={youTubeURL + randomVideo}
-              allowFullScreen
-              loading='lazy'
-            ></iframe>
+            <div className='w-[90%] h-[400px] lg:w-[65%]'>
+              <ReactPlayer
+                // playing={true}
+                width='100%'
+                height='100%'
+                // volume={1}
+                // muted={true}
+                url={`${youTubeURL}${randomVideo}`}
+                controls={true}
+                // stopOnUnmount={false}
+                // pip={true}
+              />
+            </div>
           )}
         </div>
       </div>

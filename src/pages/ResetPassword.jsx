@@ -9,17 +9,28 @@ const ResetPassword = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const [counter, setCounter] = useState(6);
+
+  const countDown = () => {
+    setCounter((prevCount) => (prevCount -= 1));
+  };
+
+  const countInt = () => {
+    setInterval(countDown, 1000);
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess(false);
     try {
-      await forgotPassword(email);
+      await forgotPassword(email.trim());
       setSuccess(true);
+      countInt();
       setTimeout(() => {
+        clearInterval(countInt);
         navigate("/login");
-      }, 5000);
+      }, 5300);
     } catch (error) {
       setError(error.code);
       console.log(error.code);
@@ -50,9 +61,18 @@ const ResetPassword = () => {
                     Invalid Email
                   </p>
                 )}
+                {error === "auth/too-many-requests" && (
+                  <p className='bg-red-800 rounded font-bold p-3 mt-4'>
+                    Account Locked try again later!
+                  </p>
+                )}
                 {success && (
                   <p className='bg-green-700 rounded font-bold p-3 mt-4'>
                     Password Reset Link Sent!
+                    <br />
+                    <span className='border-t border-t-gray-300'>
+                      Redirect in {counter} seconds...
+                    </span>
                   </p>
                 )}
                 <input

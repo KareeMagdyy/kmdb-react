@@ -18,8 +18,8 @@ export const AuthContextProvider = ({ children }) => {
     if (!email || !password || !firstName || !lastName) return;
     await createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, "users", email), {
-      firstName: firstName,
-      lastName: lastName,
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
       displayName: `${firstName} ${lastName}`,
       created: new Date().toISOString(),
       savedShows: [],
