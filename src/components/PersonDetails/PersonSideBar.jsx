@@ -17,7 +17,6 @@ const PersonSideBar = ({ info, social, classes }) => {
     }
   };
 
-  console.log(social);
   return (
     <div className={classes}>
       <img
@@ -73,44 +72,46 @@ const PersonSideBar = ({ info, social, classes }) => {
           )}
         </div>
       )}
-      <h2 className='text-2xl font-medium py-4'>Personal Info</h2>
-      <div className='bg-red-600 w-[50px] h-[2px] mx-auto lg:mx-0'></div>
-      <div className='py-2'>
-        <p className='font-bold text-lg'>Known For</p>
-        <p>{info?.known_for_department}</p>
-      </div>
-      <div className='py-2'>
-        <p className='font-bold text-lg'>Gender</p>
-        <p>
-          {info?.gender === 2
-            ? "Male"
-            : info?.gender === 1
-            ? "Female"
-            : "Unspecified"}
-        </p>
-      </div>
-      <div className='py-2'>
-        <p className='font-bold text-lg'>Birthday</p>
-        <p>{new Date(info?.birthday).toLocaleDateString("en-GB")}</p>
-      </div>
-      {info?.deathday !== null && (
+      <div className='text-left py-5 w-[85%] mt-2 mx-auto lg:mx-0'>
+        <h2 className='text-2xl font-medium py-1'>Personal Info</h2>
+        <div className='bg-red-600 w-[50px] h-[2px] mb-3'></div>
         <div className='py-2'>
-          <p className='font-bold text-lg'>Day of Death </p>
+          <p className='font-bold text-lg'>Known For</p>
+          <p>{info?.known_for_department}</p>
+        </div>
+        <div className='py-2'>
+          <p className='font-bold text-lg'>Gender</p>
           <p>
-            {new Date(info?.deathday).toLocaleDateString("en-GB")}
-            <br /> ({ageCalc(info?.deathday, info?.birthday)}) years old
+            {info?.gender === 2
+              ? "Male"
+              : info?.gender === 1
+              ? "Female"
+              : "Unspecified"}
           </p>
         </div>
-      )}
-      {info?.deathday === null && (
         <div className='py-2'>
-          <p className='font-bold text-lg'>Age</p>
-          <p>{ageCalc(new Date(), info?.birthday)} years old</p>
+          <p className='font-bold text-lg'>Birthday</p>
+          <p>{new Date(info?.birthday).toLocaleDateString("en-GB")}</p>
         </div>
-      )}
-      <div className='py-2'>
-        <p className='font-bold text-lg'>Place of Birth </p>
-        <p>{info?.place_of_birth}</p>
+        {info?.deathday !== null && (
+          <div className='py-2'>
+            <p className='font-bold text-lg'>Day of Death </p>
+            <p>
+              {new Date(info?.deathday).toLocaleDateString("en-GB")}
+              <br /> ({ageCalc(info?.deathday, info?.birthday)}) years old
+            </p>
+          </div>
+        )}
+        {info?.deathday === null && (
+          <div className='py-2'>
+            <p className='font-bold text-lg'>Age</p>
+            <p>{ageCalc(new Date(), info?.birthday)} years old</p>
+          </div>
+        )}
+        <div className='py-2'>
+          <p className='font-bold text-lg'>Place of Birth </p>
+          <p>{info?.place_of_birth}</p>
+        </div>
       </div>
     </div>
   );

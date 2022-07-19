@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import PersonSideBar from "../components/PersonDetails/PersonSideBar";
 import PersonBiography from "../components/PersonDetails/PersonBiography";
+import PersonKnownFor from "../components/PersonDetails/PersonKnownFor";
+import PersonFilmography from "../components/PersonDetails/PersonFilmography";
 
 const PersonInfo = () => {
   const [info, setInfo] = useState([]);
@@ -56,10 +58,11 @@ const PersonInfo = () => {
           social={social}
           classes='col-auto lg:col-span-1 text-white text-center lg:text-left'
         />
-        <PersonBiography
-          classes='col-auto lg:col-span-2 text-white text-center lg:text-left'
-          info={info}
-        />
+        <div className='col-auto lg:col-span-2 text-white'>
+          <PersonBiography info={info} />
+          <PersonKnownFor castAsActor={filmography?.cast} />
+          <PersonFilmography filmography={filmographyUsed} />
+        </div>
       </div>
     </section>
   );

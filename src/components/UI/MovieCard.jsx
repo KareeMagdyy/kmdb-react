@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie, img }) => {
+const MovieCard = ({ movie, img, classes = "" }) => {
   if (!img) {
     return;
   }
 
   return (
-    <div className='w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative mx-2 overflow-hidden'>
+    <div
+      className={`w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative mx-2 overflow-hidden ${classes}`}
+    >
       <div className=' hover:scale-110 transition-all hover:z-[5]  '>
         <Link to={`/movie/${movie.id}`}>
           <img

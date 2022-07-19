@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
@@ -13,7 +12,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
   const randomVideo =
-    movieVideos[Math.floor(Math.random() * movieVideos.length)]?.key;
+    movieVideos[Math.floor(Math.random() * movieVideos.length)];
   const youTubeURL = "https://www.youtube.com/embed/";
   const timeConvert = (n) => {
     let num = n;
@@ -96,17 +95,20 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
           <div>
             <div className='flex items-center justify-center gap-2  '>
               <BsFillStarFill color='gold' size={20} />
-              <p>{movieDetails.vote_average}/10</p>
+              <p>{movieDetails.vote_average || "0"}/10</p>
             </div>
           </div>
-          <h2>
-            Released:{" "}
-            {new Date(movieDetails?.release_date).toLocaleDateString("en-GB")}
-          </h2>
+          {movieDetails?.release_date && (
+            <h2>
+              Released:{" "}
+              {new Date(movieDetails?.release_date).toLocaleDateString("en-GB")}
+            </h2>
+          )}
+
           <h2>Duration: {timeConvert(movieDetails?.runtime)}</h2>
         </div>
         <div className='flex items-center justify-center flex-col gap-20 lg:flex-row lg:justify-start w-full text-center p-4  container mx-auto'>
-          <div className='w-[300px] relative'>
+          <div className='w-[300px] relative '>
             <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all z-10'>
               {!isLiked ? (
                 <span onClick={saveMovie}>
@@ -120,24 +122,26 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
             </div>
             <div className='bg-gradient-to-b from-black/50 absolute w-full h-[200px] left-0 top-0'></div>
             <img
-              className='max-w-full  px-4 mx-auto lg:mx-0'
-              src={`https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`}
-              alt='/'
+              className='max-w-full  px-4 mx-auto lg:mx-0 '
+              src={
+                movieDetails?.poster_path
+                  ? `https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`
+                  : `https://via.placeholder.com/300x400.png/DC2638/fff?text=${movieDetails.title}`
+              }
+              alt={movieDetails.title}
             />
           </div>
           {movieVideos.length > 0 && (
             <div className='w-[90%] h-[400px] lg:w-[65%]'>
-              <ReactPlayer
-                // playing={true}
+              <iframe
+                title={randomVideo?.name}
                 width='100%'
                 height='100%'
-                // volume={1}
-                // muted={true}
-                url={`${youTubeURL}${randomVideo}`}
-                controls={true}
-                // stopOnUnmount={false}
-                // pip={true}
-              />
+                frameBorder='0'
+                loading='eager'
+                src={`${youTubeURL}${randomVideo?.key}`}
+                allowFullScreen
+              ></iframe>
             </div>
           )}
         </div>
