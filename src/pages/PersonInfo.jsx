@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PersonSideBar from "../components/PersonDetails/PersonSideBar";
 import PersonBiography from "../components/PersonDetails/PersonBiography";
 import PersonKnownFor from "../components/PersonDetails/PersonKnownFor";
 import PersonFilmography from "../components/PersonDetails/PersonFilmography";
-import BlockAdultContent from "../components/UI/BlockAdultContent";
 
 const PersonInfo = () => {
   const [info, setInfo] = useState([]);
   const [filmography, setFilmography] = useState([]);
   const [social, setSocial] = useState([]);
   const params = useParams();
+  const navigate = useNavigate();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
   const getInfo = async (id) => {
@@ -19,7 +19,11 @@ const PersonInfo = () => {
       .get(
         `https://api.themoviedb.org/3/person/${id}?api_key=${key}&language=en-US`
       )
-      .then((res) => setInfo(res.data));
+      .then((res) => setInfo(res.data))
+      .catch(
+        (error) =>
+          error.code === "ERR_BAD_REQUEST" && navigate("/404/not-found")
+      );
   };
   const getFilmography = (id) => {
     axios
@@ -62,7 +66,7 @@ const PersonInfo = () => {
           </div>
         </section>
       ) : (
-        <BlockAdultContent />
+        navigate("/404/not-found")
       )}
     </>
   );

@@ -21,7 +21,11 @@ const PersonSideBar = ({ info, social, classes }) => {
     <div className={classes}>
       <img
         className='w-[300px] max-w-[100%] h-[450px] mx-auto lg:mx-0 rounded-xl'
-        src={`https://image.tmdb.org/t/p/w500${info?.profile_path}`}
+        src={
+          info?.profile_path
+            ? `https://image.tmdb.org/t/p/w500${info?.profile_path}`
+            : `https://via.placeholder.com/300x400.png/DC2638/fff?text=${info?.name}`
+        }
         alt={info?.name}
       />
       <h1 className='text-4xl font-bold py-4 lg:hidden'>{info?.name}</h1>

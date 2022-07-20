@@ -1,5 +1,4 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import unavailable from "../assets/image-unavailable.jpg";
 import { Link } from "react-router-dom";
 
 const AccountShowsSlider = ({ movies, title }) => {
@@ -11,6 +10,7 @@ const AccountShowsSlider = ({ movies, title }) => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
+  console.log(movies);
 
   return (
     <section className='container mx-auto'>
@@ -27,7 +27,7 @@ const AccountShowsSlider = ({ movies, title }) => {
           id={`slider`}
           className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'
         >
-          {movies.map((movie) => (
+          {movies?.map((movie) => (
             <div
               key={movie?.id}
               className='w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 hover:scale-110 transition-all hover:z-[5]  '
@@ -37,11 +37,9 @@ const AccountShowsSlider = ({ movies, title }) => {
                   loading='lazy'
                   className='w-full h-auto block'
                   src={
-                    movie.backdrop_path !== null
-                      ? `https://image.tmdb.org/t/p/w500${
-                          movie.backdrop_path || movie.img
-                        }`
-                      : unavailable
+                    movie?.img
+                      ? `https://image.tmdb.org/t/p/w500${movie?.img}`
+                      : `https://via.placeholder.com/264x148.png/DC2638/fff?text=${movie?.title}`
                   }
                   alt={movie.title || movie.name}
                 />

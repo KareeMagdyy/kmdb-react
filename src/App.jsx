@@ -12,6 +12,7 @@ import MoviesGenre from "./pages/MoviesGenre";
 import ResetPassword from "./pages/ResetPassword";
 import PersonInfo from "./pages/PersonInfo";
 import Footer from "./components/Footer";
+import PageNotFound404 from "./pages/PageNotFound404";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <AuthContextProvider>
         <Navbar />
         <Routes>
+          <Route path='*' element={<PageNotFound404 />} />
           <Route
             path='/'
             element={

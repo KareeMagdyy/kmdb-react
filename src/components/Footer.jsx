@@ -3,14 +3,14 @@ import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='mt-16 py-4 text-white'>
-      <div className='container mx-auto flex justify-between items-center'>
+    <footer className=' pb-5 text-white  pt-20'>
+      <div className='container mx-auto gap-2 lg:gap-0 flex flex-col md:flex-row justify-between items-center'>
         <Link to='/'>
-          <h1 className='text-red-600 text-4xl font-bold cursor-pointer '>
+          <h1 className='text-red-600 text-3xl font-bold cursor-pointer '>
             KMFLIX
           </h1>
         </Link>
-        <p className='text-lg'>
+        <p className='text-md '>
           Made With 💖 by{" "}
           <a
             href='https://karim.website/'
@@ -29,7 +29,7 @@ const Footer = () => {
             rel='noopener noreferrer'
             className='hover:text-white transition-all'
           >
-            <FaGithubSquare size={35} />
+            <FaGithubSquare size={30} />
           </a>
           <a
             href='https://www.linkedin.com/in/kareem-el-zomor-0a2a94150/'
@@ -37,7 +37,7 @@ const Footer = () => {
             rel='noopener noreferrer'
             className='hover:text-white transition-all'
           >
-            <FaLinkedin size={35} />
+            <FaLinkedin size={30} />
           </a>
         </div>
       </div>

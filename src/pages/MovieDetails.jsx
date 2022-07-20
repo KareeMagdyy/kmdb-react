@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import MovieHero from "../components/MovieDetails/MovieHero";
 import MovieInfo from "../components/MovieDetails/MovieInfo";
 import MovieCast from "../components/MovieDetails/MovieCast";
 import MovieVids from "../components/MovieDetails/MovieVids";
 import RecommendedMovies from "../components/MovieDetails/RecommendedMovies";
-import BlockAdultContent from "../components/UI/BlockAdultContent";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [movieVideos, setMovieVideos] = useState([]);
   const [movieCastAndCrew, setMovieCastAndCrew] = useState({});
   const [moviesRecommended, setMoviesRecommended] = useState([]);
+
   const params = useParams();
+  const navigate = useNavigate();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
   const getMovieDetails = (id) => {
@@ -21,7 +22,11 @@ const MovieDetails = () => {
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`
       )
-      .then((res) => setMovieDetails(res.data));
+      .then((res) => setMovieDetails(res.data))
+      .catch(
+        (error) =>
+          error.code === "ERR_BAD_REQUEST" && navigate("/404/not-found")
+      );
   };
   const getMovieVideos = (id) => {
     axios
@@ -72,7 +77,7 @@ const MovieDetails = () => {
           <RecommendedMovies moviesRecommended={moviesRecommended} />
         </>
       ) : (
-        <BlockAdultContent />
+        navigate("/404/not-found")
       )}
     </>
   );
