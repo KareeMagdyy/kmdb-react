@@ -9,7 +9,7 @@ const PersonKnownFor = ({ castAsActor }) => {
   }, []);
   return (
     <>
-      {highlightedMovies.length > 0 && (
+      {highlightedMovies?.length > 0 && (
         <div className='text-black text-left max-w-[90%] mx-auto lg:max-w-[95%] lg:mx-0'>
           <PlainRow rowId='known-for' title='Known For'>
             {highlightedMovies?.map((movie) => (

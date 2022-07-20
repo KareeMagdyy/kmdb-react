@@ -11,6 +11,7 @@ import MovieDetails from "./pages/MovieDetails";
 import MoviesGenre from "./pages/MoviesGenre";
 import ResetPassword from "./pages/ResetPassword";
 import PersonInfo from "./pages/PersonInfo";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer />
       </AuthContextProvider>
     </>
   );

@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { BsArrowDownCircle } from "react-icons/bs";
 import axios from "axios";
 import requests from "../Requests";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
-
   const movie = movies[Math.floor(Math.random() * movies.length)];
+
+  const scrollDownHandler = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
 
   useEffect(() => {
     axios
       .get(requests.requestPopular)
       .then((res) => setMovies(res.data.results));
-    // .then((res) => console.log(res.data));
   }, []);
 
   return (
@@ -33,10 +36,8 @@ const Main = () => {
             <button className='border my-4 bg-gray-300 text-black border-gray-300 py-2 px-5'>
               Watch Trailer
             </button>
-            {/* <button className='border my-4  text-white border-gray-300 py-2 px-5 '>
-              Watch Trailer
-            </button> */}
           </Link>
+
           <p className='text-gray-400 text-small'>
             Released:{" "}
             {new Date(movie?.release_date).toLocaleDateString("en-GB")}
@@ -44,6 +45,12 @@ const Main = () => {
           <p className='md:w-full hidden md:max-w-[70%] md:block lg:max-w-[50%] xl:max-w-[30%] text-gray-200 bg-black/60 rounded p-2'>
             {movie?.overview}
           </p>
+        </div>
+        <div
+          className='text-white hidden md:block absolute bottom-[3%] left-[50%] translate-x-[-50%] animate-bounce cursor-pointer'
+          onClick={scrollDownHandler}
+        >
+          <BsArrowDownCircle size={30} />
         </div>
       </div>
     </div>
