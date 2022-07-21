@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 
 const PlainRow = ({ title, rowId, children, classes = "" }) => {
+  const location = useLocation();
   const slideLeft = () => {
     const slider = document.getElementById(`slider ${rowId}`);
     slider.scrollLeft -= 500;
@@ -10,6 +13,13 @@ const PlainRow = ({ title, rowId, children, classes = "" }) => {
     const slider = document.getElementById(`slider ${rowId}`);
     slider.scrollLeft += 500;
   };
+
+  useEffect(() => {
+    const slider = document.getElementById(`slider ${rowId}`);
+    slider.scrollTo({ left: 0 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   return (
     <section className={`container mx-auto ${classes}`}>
       {title && (

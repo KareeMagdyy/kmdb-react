@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import SearchBar from "./SearchBar/SearchBar";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -14,7 +15,7 @@ const Navbar = () => {
     }
   };
   return (
-    <header className='flex items-center justify-between p-4 z-[100] absolute w-full container left-[50%] translate-x-[-50%]'>
+    <header className='flex items-start justify-between p-4 z-[100] absolute w-full container left-[50%] translate-x-[-50%]'>
       <Link to='/'>
         <h1 className='text-red-600 text-4xl font-bold cursor-pointer '>
           KMFLIX
@@ -32,17 +33,20 @@ const Navbar = () => {
           </Link>
         </div>
       ) : (
-        <div>
-          <Link to='/account'>
-            <button className=' text-white pr-4 '>Account</button>
-          </Link>
-          <button
-            onClick={logOutHandler}
-            className='bg-red-600 text-white rounded px-6 py-2 '
-          >
-            Sign Out
-          </button>
-        </div>
+        <>
+          <SearchBar classes='hidden md:block' />
+          <div>
+            <Link to='/account'>
+              <button className=' text-white pr-4 '>Account</button>
+            </Link>
+            <button
+              onClick={logOutHandler}
+              className='bg-red-600 text-white rounded px-6 py-2 '
+            >
+              Sign Out
+            </button>
+          </div>
+        </>
       )}
     </header>
   );
