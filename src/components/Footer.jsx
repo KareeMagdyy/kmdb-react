@@ -10,18 +10,7 @@ const Footer = () => {
             KMFLIX
           </h1>
         </Link>
-        <p className='text-md '>
-          Made With 💖 by{" "}
-          <a
-            href='https://karim.website/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='hover:underline font-bold'
-          >
-            Karim Magdy
-          </a>{" "}
-          &copy; 2022
-        </p>
+
         <div className='flex gap-2 text-red-600'>
           <a
             href='https://github.com/KareeMagdyy'
@@ -40,6 +29,20 @@ const Footer = () => {
             <FaLinkedin size={30} />
           </a>
         </div>
+      </div>
+      <div className='container mx-auto pt-2'>
+        <p className='text-md text-center'>
+          Made With 💖 by{" "}
+          <a
+            href='https://karim.website/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='hover:underline font-bold'
+          >
+            Karim Magdy
+          </a>{" "}
+          &copy; 2022
+        </p>
       </div>
     </footer>
   );

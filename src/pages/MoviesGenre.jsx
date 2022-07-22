@@ -34,7 +34,7 @@ const MoviesGenre = () => {
         <div className='bg-black/75 absolute w-full h-[300px] left-0 top-0'></div>
         <div className='bg-gradient-to-b from-black absolute w-full h-[120px] left-0 top-0'></div>
         <div className='bg-gradient-to-t from-black absolute w-full h-[120px] left-0 bottom-0'></div>
-        <h1 className='text-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] text-4xl font-black'>
+        <h1 className='text-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] text-2xl md:text-4xl font-black'>
           {genreTitle}
         </h1>
       </div>
