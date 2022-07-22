@@ -28,7 +28,7 @@ const SearchForm = ({ query, setQuery }) => {
           value={query}
           onChange={changeHandler}
           className=' w-full rounded-md shadow-sm bg-black/80 text-white border-white
-            placeholder-white focus:border-red-600 focus:ring focus:ring-red-500 focus:ring-opacity-50 px-4'
+            placeholder-gray-400 focus:border-red-600 focus:ring focus:ring-red-500 focus:ring-opacity-50 px-4'
         />
         {query?.length > 0 ? (
           <IoIosClose

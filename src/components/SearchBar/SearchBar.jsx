@@ -21,7 +21,7 @@ const SearchBar = ({ classes }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
   return (
-    <div className={`w-[30%] ${classes}`}>
+    <div className={`w-full  lg:w-[75%] mx-auto ${classes}`}>
       <SearchForm setQuery={setQuery} query={query} />
       <SearchResult result={queryRes} setQuery={setQuery} />
     </div>

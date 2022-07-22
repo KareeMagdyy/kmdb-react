@@ -11,16 +11,21 @@ const MovieCast = ({ movieCastAndCrew }) => {
 
   return (
     <>
-      <div className='container mx-auto p-6'>
-        <h1 className='   text-white text-4xl  font-bold mb-5'>Cast</h1>
-        <p className='bg-red-600 w-[80px]  h-[1px]'></p>
-      </div>
-      <PlainRow
-        title={false}
-        rowId='cast'
-        children={renderActors}
-        classes=' p-6'
-      />
+      {adultActorsOut?.length > 0 && (
+        <>
+          <div className='container mx-auto p-6'>
+            <h1 className='   text-white text-4xl  font-bold mb-5'>Cast</h1>
+            <p className='bg-red-600 w-[80px]  h-[1px]'></p>
+          </div>
+
+          <PlainRow
+            title={false}
+            rowId='cast'
+            children={renderActors}
+            classes=' p-6'
+          />
+        </>
+      )}
     </>
   );
 };

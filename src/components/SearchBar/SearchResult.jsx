@@ -9,7 +9,7 @@ const SearchResult = ({ result, setQuery }) => {
   }, [location]);
 
   return (
-    <div className='max-h-[250px] overflow-x-hidden overflow-y-scroll rounded-b-md bg-black/80 text-white '>
+    <div className='max-h-[250px] overflow-x-hidden overflow-y-scroll rounded-b-md bg-black/95 text-white '>
       {result?.length > 0 && (
         <>
           {result?.map((item) => (

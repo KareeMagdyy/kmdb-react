@@ -10,7 +10,6 @@ const AccountShowsSlider = ({ movies, title }) => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
-  console.log(movies);
 
   return (
     <section className='container mx-auto'>

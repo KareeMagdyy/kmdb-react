@@ -19,7 +19,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className='w-full relative  h-[55vh] md:h-screen text-white  '>
+    <div className='w-full relative  h-[70vh] md:h-screen text-white  '>
       <div className='w-full h-full'>
         <div className='absolute w-full h-[55vh]  bg-gradient-to-b from-black'></div>
         <div className='absolute w-full h-[55vh] md:h-screen bottom-[-1px] bg-gradient-to-t from-black'></div>
