@@ -11,8 +11,8 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
   const [movies, setMovies] = useState([]);
   const { user } = UserAuth();
   const navigate = useNavigate();
-  const randomVideo =
-    movieVideos[Math.floor(Math.random() * movieVideos.length)];
+  // const randomVideo =
+  //   movieVideos[Math.floor(Math.random() * movieVideos.length)];
   const youTubeURL = "https://www.youtube.com/embed/";
   const timeConvert = (n) => {
     let num = n;
@@ -132,14 +132,14 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
             />
           </div>
           {movieVideos.length > 0 && (
-            <div className='w-[90%] h-[400px] lg:w-[65%]'>
+            <div className='w-[90%] h-[400px] lg:w-[65%] '>
               <iframe
-                title={randomVideo?.name}
+                title={movieVideos[0]?.name}
                 width='100%'
                 height='100%'
                 frameBorder='0'
                 loading='eager'
-                src={`${youTubeURL}${randomVideo?.key}`}
+                src={`${youTubeURL}${movieVideos[0]?.key}`}
                 allowFullScreen
               ></iframe>
             </div>

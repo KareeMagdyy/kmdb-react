@@ -33,7 +33,7 @@ const Main = () => {
             {movie?.title}
           </h1>
           <Link to={`movie/${movie?.id}`}>
-            <button className='border my-4 bg-gray-300 text-black border-gray-300 py-2 px-5'>
+            <button className='border my-4 rounded-md bg-gray-300 text-black border-gray-300 py-2 px-5'>
               Watch Trailer
             </button>
           </Link>

@@ -11,7 +11,12 @@ const Row = ({ title, fetchURL, rowId }) => {
   }, [fetchURL]);
 
   const children = movies.map((movie) => (
-    <MovieCard key={movie.id} movie={movie} img={movie.backdrop_path} />
+    <MovieCard
+      key={movie.id}
+      movie={movie}
+      img={movie.backdrop_path}
+      classes='rounded-md '
+    />
   ));
 
   return <PlainRow title={title} rowId={rowId} children={children} />;
