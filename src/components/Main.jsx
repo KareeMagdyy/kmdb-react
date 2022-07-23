@@ -14,6 +14,9 @@ const Main = () => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
 
+  const truncateString = (str, n) =>
+    str?.length > n ? `${str.slice(0, n)}...` : str;
+
   useEffect(() => {
     axios
       .get(requests.popular)
@@ -73,7 +76,7 @@ const Main = () => {
             </div>
           ) : (
             <p className='md:w-full hidden md:max-w-[70%] md:block lg:max-w-[50%] xl:max-w-[30%] text-gray-200 bg-black/60 rounded p-2'>
-              {movie?.overview}
+              {truncateString(movie?.overview, 240)}
             </p>
           )}
         </div>
