@@ -13,9 +13,10 @@ const MainLoggedIn = () => {
     axios
       .get(`https://api.ipregistry.co/?key=${IP_RE_KEY}`)
       .then((res) => setLocation(res.data.location));
+    window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(location);
+
   return (
     <main>
       <Main />

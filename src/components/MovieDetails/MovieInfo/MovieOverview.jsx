@@ -35,10 +35,11 @@ const MovieOverview = ({ movieDetails, movieCastAndCrew }) => {
         <>
           <div className='py-4 lg:max-w-[75ch]  text-lg'>
             <span className='font-bold text-white mr-2'>Director:</span>
-            {director?.map((e, id) => (
+            {director?.map((e, idx) => (
               <Link key={uuid()} to={`/person/${e.id}`}>
                 <span className='hover:underline hover:text-gray-400'>
                   {e.name}
+                  {idx === director?.length - 1 ? "" : ",  "}
                 </span>
               </Link>
             ))}

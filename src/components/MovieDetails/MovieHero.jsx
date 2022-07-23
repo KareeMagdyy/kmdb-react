@@ -95,7 +95,7 @@ const MovieHero = ({ movieDetails, movieVideos }) => {
           <div>
             <div className='flex items-center justify-center gap-2  '>
               <BsFillStarFill color='gold' size={20} />
-              <p>{movieDetails.vote_average || "0"}/10</p>
+              <p>{movieDetails?.vote_average?.toFixed(1) || "0"}/10</p>
             </div>
           </div>
           {movieDetails?.release_date && (

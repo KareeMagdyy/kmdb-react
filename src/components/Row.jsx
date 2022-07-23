@@ -15,7 +15,7 @@ const Row = ({ title, fetchURL, rowId, region = "" }) => {
       .then(
         setTimeout(() => {
           setRowIsLoading(false);
-        }, 2000)
+        }, 1500)
       );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
