@@ -1,36 +1,54 @@
+import { useEffect, useState } from "react";
 import Main from "./Main";
 import Row from "./Row";
 import requests from "../Requests";
+import axios from "axios";
 
 const MainLoggedIn = () => {
+  const [location, setLocation] = useState("");
+
+  const IP_RE_KEY = process.env.REACT_APP_IP_REGISTRY_KEY;
+
+  useEffect(() => {
+    axios
+      .get(`https://api.ipregistry.co/?key=${IP_RE_KEY}`)
+      .then((res) => setLocation(res.data.location));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(location);
   return (
     <main>
       <Main />
       <Row
-        rowId='playingNow'
-        title='Playing Now'
-        fetchURL={requests?.requestPlayingNow}
+        rowId='country-playingNow'
+        title={`Playing Now In ${location?.country?.name}` || "Playing Now"}
+        fetchURL={requests?.playingNow}
+        region={`&region=${location?.country?.code}`}
       />
+
+      <Row
+        rowId='country-Popular'
+        title={`Popular In ${location?.country?.name}` || "Playing Now"}
+        fetchURL={requests?.popular}
+        region={`&region=${location?.country?.code}`}
+      />
+
+      <Row
+        rowId='upcoming'
+        title='Global Up Coming'
+        fetchURL={requests?.upcoming}
+      />
+
       <Row
         rowId='trending'
-        title='Trending Now'
-        fetchURL={requests?.requestTrending}
-      />
-      <Row
-        rowId='eg'
-        title='Playing Now In Egypt'
-        fetchURL={requests?.requestEGNow}
-      />
-      <Row
-        rowId='EGY-Popular'
-        title='Popular In Egypt'
-        fetchURL={requests?.requestEGPopular}
+        title={`Global Trending `}
+        fetchURL={requests?.trendingDaily}
       />
 
       <Row
         rowId='toprated'
-        title='TopRated'
-        fetchURL={requests?.requestTopRated}
+        title='Global Top Rated'
+        fetchURL={requests?.topRated}
       />
     </main>
   );
