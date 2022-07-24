@@ -28,7 +28,7 @@ const MovieDetails = () => {
       .then(
         setTimeout(() => {
           setIsLoading(false);
-        }, 1500)
+        }, 1000)
       )
       .catch(
         (error) =>

@@ -24,7 +24,7 @@ const Main = () => {
       .then(
         setTimeout(() => {
           setIsLoading(false);
-        }, 1500)
+        }, 700)
       );
   }, []);
 

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className='container mx-auto gap-2 lg:gap-0 flex flex-col md:flex-row justify-between items-center'>
         <Link to='/'>
           <h1 className='text-red-600 text-3xl font-bold cursor-pointer '>
-            KMFLIX
+            KMDB
           </h1>
         </Link>
 

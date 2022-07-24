@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className='container grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-1 items-start justify-between mx-auto '>
         <Link to='/'>
           <h1 className='text-red-600 text-3xl md:text-4xl font-bold cursor-pointer '>
-            KMFLIX
+            KMDB
           </h1>
         </Link>
         {!user ? (

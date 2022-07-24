@@ -10,16 +10,23 @@ const PersonInfo = () => {
   const [info, setInfo] = useState([]);
   const [filmography, setFilmography] = useState([]);
   const [social, setSocial] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const navigate = useNavigate();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
   const getInfo = async (id) => {
+    setIsLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/person/${id}?api_key=${key}&language=en-US`
       )
       .then((res) => setInfo(res.data))
+      .then(
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 750)
+      )
       .catch(
         (error) =>
           error.code === "ERR_BAD_REQUEST" && navigate("/404/not-found")
@@ -57,11 +64,18 @@ const PersonInfo = () => {
               info={info}
               social={social}
               classes='col-auto lg:col-span-1 text-white text-center lg:text-left '
+              loading={isLoading}
             />
             <div className='col-auto lg:col-span-2 text-white'>
-              <PersonBiography info={info} />
-              <PersonKnownFor castAsActor={filmography?.cast} />
-              <PersonFilmography filmography={filmography} />
+              <PersonBiography info={info} loading={isLoading} />
+              <PersonKnownFor
+                castAsActor={filmography?.cast}
+                loading={isLoading}
+              />
+              <PersonFilmography
+                filmography={filmography}
+                loading={isLoading}
+              />
             </div>
           </div>
         </section>
