@@ -1,4 +1,4 @@
-import bgImg from "../assets/home-bg-lg.jpg";
+import bgImg from "../assets/rows-red-seats-theater.jpg";
 import { Link } from "react-router-dom";
 
 const GetStarted = () => {

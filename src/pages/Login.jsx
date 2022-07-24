@@ -1,6 +1,6 @@
 import { UserAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import bgImg from "../assets/home-bg-lg.jpg";
+import bgImg from "../assets/rows-red-seats-theater.jpg";
 import { useState } from "react";
 
 const Login = () => {

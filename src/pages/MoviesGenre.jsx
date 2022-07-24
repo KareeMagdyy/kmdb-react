@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import bgImg from "../assets/home-bg-lg.jpg";
+import bgImg from "../assets/rows-red-seats-theater.jpg";
 import Skeleton from "react-loading-skeleton";
 
 const MoviesGenre = () => {
