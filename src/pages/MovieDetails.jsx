@@ -12,17 +12,24 @@ const MovieDetails = () => {
   const [movieVideos, setMovieVideos] = useState([]);
   const [movieCastAndCrew, setMovieCastAndCrew] = useState({});
   const [moviesRecommended, setMoviesRecommended] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
   const navigate = useNavigate();
   const key = process.env.REACT_APP_IMDB_API_KEY;
 
   const getMovieDetails = (id) => {
+    setIsLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`
       )
       .then((res) => setMovieDetails(res.data))
+      .then(
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500)
+      )
       .catch(
         (error) =>
           error.code === "ERR_BAD_REQUEST" && navigate("/404/not-found")
@@ -67,14 +74,21 @@ const MovieDetails = () => {
     <>
       {!movieDetails.adult ? (
         <>
-          <MovieHero movieDetails={movieDetails} movieVideos={movieVideos} />
+          <MovieHero
+            movieDetails={movieDetails}
+            movieVideos={movieVideos}
+            loading={isLoading}
+          />
           <MovieInfo
             movieDetails={movieDetails}
             movieCastAndCrew={movieCastAndCrew}
+            loading={isLoading}
           />
-          <MovieVids movieVideos={movieVideos} />
-          <MovieCast movieCastAndCrew={movieCastAndCrew} />
-          <RecommendedMovies moviesRecommended={moviesRecommended} />
+          {!isLoading && <MovieVids movieVideos={movieVideos} />}
+          {!isLoading && <MovieCast movieCastAndCrew={movieCastAndCrew} />}
+          {!isLoading && (
+            <RecommendedMovies moviesRecommended={moviesRecommended} />
+          )}
         </>
       ) : (
         navigate("/404/not-found")

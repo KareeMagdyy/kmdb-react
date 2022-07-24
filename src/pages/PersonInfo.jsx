@@ -52,11 +52,11 @@ const PersonInfo = () => {
     <>
       {!info.adult ? (
         <section className='container mx-auto pb-10 pt-[120px] '>
-          <div className='grid grid-cols-1 lg:grid-cols-3 mx-auto'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 mx-auto '>
             <PersonSideBar
               info={info}
               social={social}
-              classes='col-auto lg:col-span-1 text-white text-center lg:text-left'
+              classes='col-auto lg:col-span-1 text-white text-center lg:text-left '
             />
             <div className='col-auto lg:col-span-2 text-white'>
               <PersonBiography info={info} />

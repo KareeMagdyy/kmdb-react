@@ -34,7 +34,9 @@ const Main = () => {
         <div className='absolute w-full h-[55vh]  bg-gradient-to-b from-black'></div>
         <div className='absolute w-full h-[55vh] md:h-screen bottom-[-1px] bg-gradient-to-t from-black'></div>
         <img
-          className='w-full h-full object-cover'
+          className={`w-full h-full object-cover ${
+            isLoading ? `hidden` : `block`
+          }`}
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
           alt={movie?.title}
         />
