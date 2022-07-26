@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
-const Footer = () => {
+const Footer = ({ classes }) => {
   return (
-    <footer className=' pb-5 text-white  pt-20'>
+    <footer className={" text-white py-2 w-full mt-auto" + classes}>
       <div className='container mx-auto gap-2 lg:gap-0 flex flex-col md:flex-row justify-between items-center'>
         <Link to='/'>
           <h1 className='text-red-600 text-3xl font-bold cursor-pointer '>

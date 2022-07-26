@@ -97,7 +97,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <p className='py-4 mt-6 text-center'>
-                  <span className='text-gray-500 mr-1 '>New to Kmflix?</span>{" "}
+                  <span className='text-gray-500 mr-1 '>New to KMDB?</span>{" "}
                   <Link to='/signup'>Sign up</Link>
                 </p>
               </form>

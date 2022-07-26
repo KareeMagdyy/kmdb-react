@@ -5,6 +5,7 @@ import PersonSideBar from "../components/PersonDetails/PersonSideBar";
 import PersonBiography from "../components/PersonDetails/PersonBiography";
 import PersonKnownFor from "../components/PersonDetails/PersonKnownFor";
 import PersonFilmography from "../components/PersonDetails/PersonFilmography";
+import Footer from "../components/Footer";
 
 const PersonInfo = () => {
   const [info, setInfo] = useState([]);
@@ -78,6 +79,7 @@ const PersonInfo = () => {
               />
             </div>
           </div>
+          <Footer />
         </section>
       ) : (
         navigate("/404/not-found")

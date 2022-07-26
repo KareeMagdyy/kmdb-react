@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import notFound from "../assets/404.svg";
+import Footer from "../components/Footer";
 
 const PageNotFound404 = () => {
   return (
@@ -18,6 +19,7 @@ const PageNotFound404 = () => {
           </Link>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

@@ -9,7 +9,7 @@ const MovieGenre = ({ movieDetails, loading }) => {
         ? Array(2)
             .fill(0)
             .map((_, id) => (
-              <div className='w-[100px] '>
+              <div key={id} className='w-[100px] '>
                 <Skeleton height={30} />
               </div>
             ))

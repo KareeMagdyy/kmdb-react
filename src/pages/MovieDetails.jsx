@@ -6,6 +6,7 @@ import MovieInfo from "../components/MovieDetails/MovieInfo";
 import MovieCast from "../components/MovieDetails/MovieCast";
 import MovieVids from "../components/MovieDetails/MovieVids";
 import RecommendedMovies from "../components/MovieDetails/RecommendedMovies";
+import Footer from "../components/Footer";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -71,7 +72,7 @@ const MovieDetails = () => {
   }, [params.id]);
 
   return (
-    <>
+    <main>
       {!movieDetails.adult ? (
         <>
           <MovieHero
@@ -89,11 +90,12 @@ const MovieDetails = () => {
           {!isLoading && (
             <RecommendedMovies moviesRecommended={moviesRecommended} />
           )}
+          <Footer />
         </>
       ) : (
         navigate("/404/not-found")
       )}
-    </>
+    </main>
   );
 };
 

@@ -12,8 +12,6 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
   const [movies, setMovies] = useState([]);
   const { user } = UserAuth();
   const navigate = useNavigate();
-  // const randomVideo =
-  //   movieVideos[Math.floor(Math.random() * movieVideos.length)];
   const youTubeURL = "https://www.youtube.com/embed/";
   const timeConvert = (n) => {
     let num = n;
@@ -21,10 +19,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
     let rhours = Math.floor(hours);
     let minutes = (hours - rhours) * 60;
     let rminutes = Math.round(minutes);
-    return (
-      // num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s)."
-      `${rhours}h ${rminutes}m`
-    );
+    return `${rhours}h ${rminutes}m`;
   };
 
   const movieId = doc(db, "users", `${user?.email}`);
@@ -40,7 +35,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
         }),
       });
     } else {
-      navigate("/");
+      navigate("/get-started");
     }
   };
   const deleteShow = async (id) => {
@@ -79,7 +74,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
   return (
     <>
       <div className='w-full text-white'>
-        <div className='relative'>
+        <div className='relative '>
           <img
             src={
               loading
@@ -87,7 +82,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
                 : `https://image.tmdb.org/t/p/original${movieDetails?.backdrop_path}`
             }
             alt='/'
-            className='w-full object-cover h-[500px]'
+            className='w-full object-cover h-[500px] '
           />
           <div className='absolute top-[50%] text-center left-[50%] translate-x-[-50%] translate-y-[-50%] text-4xl lg:text-6xl max-w-[25ch] font-bold z-10 select-none'>
             {loading ? (
@@ -139,7 +134,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
               <Skeleton height={300} />
             ) : (
               <>
-                <div className='absolute top-[-9px] left-[0] cursor-pointer hover:text-gray-200 transition-all z-10'>
+                <div className='absolute top-[-9px] left-[-15px] cursor-pointer hover:text-gray-200 transition-all z-10'>
                   {!isLiked ? (
                     <span onClick={saveMovie}>
                       <MdBookmarkAdd size={75} />
@@ -153,7 +148,7 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
                 <div className='bg-gradient-to-b from-black/50 absolute w-full h-[200px] left-0 top-0'></div>
 
                 <img
-                  className='max-w-full  px-4 mx-auto lg:mx-0 '
+                  className='max-w-full   mx-auto lg:mx-0 rounded-lg'
                   src={
                     movieDetails?.poster_path !== null
                       ? `https://image.tmdb.org/t/p/original${movieDetails?.poster_path}`

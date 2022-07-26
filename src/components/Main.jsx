@@ -19,7 +19,7 @@ const Main = () => {
 
   useEffect(() => {
     axios
-      .get(requests.popular)
+      .get(requests.trendingDaily)
       .then((res) => setMovies(res.data.results))
       .then(
         setTimeout(() => {

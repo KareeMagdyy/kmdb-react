@@ -15,7 +15,7 @@ const AccountShowsSlider = ({ movies, title }) => {
     <section className='container mx-auto'>
       <h2 className='text-white text-xl font-bold p-4 md:text-xl'>{title}</h2>
       {movies?.length < 1 ? (
-        <h1 className='text-white text-xl font-bold p-4 md:text-lg'>
+        <h1 className='text-white text-xl font-bold p-4 md:text-lg min-h-[30vh]'>
           Your Watch List is Empty{" "}
         </h1>
       ) : (

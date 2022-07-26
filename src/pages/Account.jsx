@@ -4,6 +4,7 @@ import bgImg from "../assets/rows-red-seats-theater.jpg";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { doc, onSnapshot } from "firebase/firestore";
+import Footer from "../components/Footer";
 
 const Account = () => {
   const [userDisplayName, setUserDisplayName] = useState("");
@@ -22,7 +23,7 @@ const Account = () => {
   }, [user?.email]);
 
   return (
-    <>
+    <div className='relative'>
       <div className='w-full text-white relative'>
         <img src={bgImg} alt='/' className='w-full h-[300px] object-cover' />
 
@@ -34,7 +35,8 @@ const Account = () => {
         </h1>
       </div>
       <AccountShowsSlider movies={movies} title='Watch List' />
-    </>
+      <Footer classes='absolute bottom-0 left-0' />
+    </div>
   );
 };
 

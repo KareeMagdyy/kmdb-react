@@ -1,7 +1,13 @@
 import MainLoggedIn from "../components/MainLoggedIn";
+import Footer from "../components/Footer";
 
 const Home = () => {
-  return <MainLoggedIn />;
+  return (
+    <>
+      <MainLoggedIn />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;

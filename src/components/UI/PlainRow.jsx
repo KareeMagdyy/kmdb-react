@@ -29,7 +29,7 @@ const PlainRow = ({ title, rowId, children, classes = "" }) => {
           </h2>
         )}
 
-        <div className='relative flex items-center group'>
+        <div className='relative flex items-center group '>
           <MdChevronLeft
             onClick={slideLeft}
             size={40}
