@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
@@ -10,8 +10,9 @@ import Skeleton from "react-loading-skeleton";
 const MovieHero = ({ movieDetails, movieVideos, loading }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [movies, setMovies] = useState([]);
-  const { user } = UserAuth();
+  const { user, setLastURL } = UserAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const youTubeURL = "https://www.youtube.com/embed/";
   const timeConvert = (n) => {
     let num = n;
@@ -35,7 +36,8 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
         }),
       });
     } else {
-      navigate("/get-started");
+      setLastURL(location);
+      navigate("/login");
     }
   };
   const deleteShow = async (id) => {

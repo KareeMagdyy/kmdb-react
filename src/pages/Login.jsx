@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
-  const { signIn } = UserAuth();
+  const { signIn, lastURL, setLastURL } = UserAuth();
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -15,7 +15,9 @@ const Login = () => {
     setErr("");
     try {
       await signIn(email, password);
-      navigate("/");
+      // navigate("/");
+      !lastURL ? navigate("/") : navigate(lastURL.pathname);
+      setLastURL("");
     } catch (error) {
       console.log(error.code);
       setErr(error.code);

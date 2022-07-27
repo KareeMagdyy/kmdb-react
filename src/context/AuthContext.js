@@ -13,6 +13,7 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [lastURL, setLastURL] = useState("");
 
   const signUp = async (email, password, firstName, lastName) => {
     if (!email || !password || !firstName || !lastName) return;
@@ -42,7 +43,15 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, signUp, signIn, logOut, forgotPassword }}
+      value={{
+        user,
+        signUp,
+        signIn,
+        logOut,
+        forgotPassword,
+        lastURL,
+        setLastURL,
+      }}
     >
       {children}
     </AuthContext.Provider>
