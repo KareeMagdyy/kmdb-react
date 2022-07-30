@@ -9,7 +9,7 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [err, setErr] = useState("");
-  const { signUp } = UserAuth();
+  const { signUp, lastURL, setLastURL } = UserAuth();
 
   const navigate = useNavigate();
 
@@ -18,7 +18,8 @@ const Signup = () => {
     setErr("");
     try {
       await signUp(email, password, firstName, lastName);
-      navigate("/");
+      !lastURL ? navigate("/") : navigate(lastURL.pathname);
+      setLastURL("");
     } catch (error) {
       console.log(error.code);
       setErr(error.code);
