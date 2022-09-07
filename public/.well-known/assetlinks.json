@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.qaibfn",
+      "sha256_cert_fingerprints": ["A3:1B:C4:46:A2:76:AA:38:D3:B1:A3:77:F5:E8:EA:24:9F:99:E4:D3:C5:9F:3E:E5:E1:EA:B6:67:A8:EF:7D:81"]
+    }
+  }
+]
