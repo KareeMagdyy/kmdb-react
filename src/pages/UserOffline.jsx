@@ -26,7 +26,7 @@ const UserOffline = ({ children }) => {
   const pageReload = () => window.location.reload();
   return (
     <>
-      {isOnline ? (
+      {isOnline && window.navigator.onLine ? (
         children
       ) : (
         <section className='h-screen  pt-10 container mx-auto'>
