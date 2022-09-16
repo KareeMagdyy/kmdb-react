@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -13,32 +14,40 @@ import ResetPassword from "./pages/ResetPassword";
 import PersonInfo from "./pages/PersonInfo";
 import PageNotFound404 from "./pages/PageNotFound404";
 import { SkeletonTheme } from "react-loading-skeleton";
+import UserOffline from "./pages/UserOffline";
 
 const App = () => {
+  const [online, setOnline] = useState(true);
+  window.addEventListener("online", () => setOnline(true));
+  window.addEventListener("offline", () => setOnline(false));
   return (
     <>
       <SkeletonTheme baseColor='#313131' highlightColor='#525252'>
         <AuthContextProvider>
           <Navbar />
-          <Routes>
-            <Route path='*' element={<PageNotFound404 />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/get-started' element={<GetStarted />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/reset-password' element={<ResetPassword />} />
-            <Route path='/movie/:id' element={<MovieDetails />} />
-            <Route path='/movieGenre/:genre' element={<MoviesGenre />} />
-            <Route path='/person/:id' element={<PersonInfo />} />
-            <Route
-              path='/account'
-              element={
-                <ProtectedRoute>
-                  <Account />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
+          {!navigator.onLine || !online ? (
+            <UserOffline />
+          ) : (
+            <Routes>
+              <Route path='*' element={<PageNotFound404 />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/get-started' element={<GetStarted />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
+              <Route path='/reset-password' element={<ResetPassword />} />
+              <Route path='/movie/:id' element={<MovieDetails />} />
+              <Route path='/movieGenre/:genre' element={<MoviesGenre />} />
+              <Route path='/person/:id' element={<PersonInfo />} />
+              <Route
+                path='/account'
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          )}
         </AuthContextProvider>
       </SkeletonTheme>
     </>
