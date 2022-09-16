@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -17,17 +16,12 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import UserOffline from "./pages/UserOffline";
 
 const App = () => {
-  const [online, setOnline] = useState(true);
-  window.addEventListener("online", () => setOnline(true));
-  window.addEventListener("offline", () => setOnline(false));
   return (
     <>
       <SkeletonTheme baseColor='#313131' highlightColor='#525252'>
         <AuthContextProvider>
           <Navbar />
-          {!navigator.onLine || !online ? (
-            <UserOffline />
-          ) : (
+          <UserOffline>
             <Routes>
               <Route path='*' element={<PageNotFound404 />} />
               <Route path='/' element={<Home />} />
@@ -47,7 +41,7 @@ const App = () => {
                 }
               />
             </Routes>
-          )}
+          </UserOffline>
         </AuthContextProvider>
       </SkeletonTheme>
     </>
