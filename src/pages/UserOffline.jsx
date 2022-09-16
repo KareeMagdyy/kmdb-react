@@ -23,7 +23,10 @@ const UserOffline = ({ children }) => {
     };
   });
 
-  const pageReload = () => window.location.reload();
+  const pageReload = () => {
+    window.location.reload();
+    setOnlineStatus(window.navigator.onLine);
+  };
   return (
     <>
       {isOnline && window.navigator.onLine ? (

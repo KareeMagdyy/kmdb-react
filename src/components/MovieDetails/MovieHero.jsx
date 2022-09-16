@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc, onSnapshot } from "firebase/firestore";
-import { BsFillStarFill } from "react-icons/bs";
+import { BsFillStarFill, BsArrowLeftCircle } from "react-icons/bs";
 import { MdBookmarkAdd, MdBookmarkAdded } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 
@@ -77,6 +77,11 @@ const MovieHero = ({ movieDetails, movieVideos, loading }) => {
     <>
       <div className='w-full text-white'>
         <div className='relative '>
+          <BsArrowLeftCircle
+            className='absolute left-5 lg:left-10 top-32 md:top-20  z-50 cursor-pointer'
+            size={35}
+            onClick={() => window.history.back()}
+          />
           <img
             src={
               loading

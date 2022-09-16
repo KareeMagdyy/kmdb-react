@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import bgImg from "../assets/rows-red-seats-theater.jpg";
 import Footer from "../components/Footer";
 import Skeleton from "react-loading-skeleton";
+import { BsArrowLeftCircle } from "react-icons/bs";
 
 const MoviesGenre = () => {
   const [moviesByGenre, setMoviesByGenre] = useState([]);
@@ -43,6 +44,11 @@ const MoviesGenre = () => {
         <div className='bg-gradient-to-b from-black absolute w-full h-[120px] left-0 top-0'></div>
         <div className='bg-gradient-to-t from-black absolute w-full h-[120px] left-0 bottom-0'></div>
         <div className='text-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] text-2xl md:text-4xl font-black'>
+          <BsArrowLeftCircle
+            className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[50%] mt-5  z-50 cursor-pointer'
+            size={35}
+            onClick={() => window.history.back()}
+          />
           {isLoading ? (
             <Skeleton width={155} height={40} />
           ) : (
